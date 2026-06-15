@@ -214,8 +214,6 @@
 
                 {{-- Mobile hamburger --}}
                 <button id="bw-mobile-toggle" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#bw-mobile-menu"
-                    aria-controls="bw-mobile-menu" aria-expanded="false"
                     style="display:none; background:none; border:none; cursor:pointer; padding:6px; color:#a100ff;">
                     <span class="material-symbols-outlined" style="font-size:28px;">menu</span>
                 </button>
@@ -224,7 +222,7 @@
     </div>
 
     {{-- Mobile Menu --}}
-    <div class="collapse" id="bw-mobile-menu" style="background:#ffffff; border-top:1px solid #ede8f5;">
+    <div id="bw-mobile-menu" style="display:none; background:#ffffff; border-top:1px solid #ede8f5;">
         <div style="max-width:1200px; margin:0 auto; padding:20px 24px 28px; display:flex; flex-direction:column; gap:4px;">
 
             <p style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#807287; margin:16px 0 6px; font-family:'Plus Jakarta Sans', sans-serif;">Candidate</p>
@@ -257,4 +255,34 @@
             @endif
         </div>
     </div>
+
+    {{-- Mobile Menu Script --}}
+    <script>
+        document.addEventListener('click', function(e) {
+            var toggleBtn = e.target.closest('#bw-mobile-toggle');
+            if (toggleBtn) {
+                e.preventDefault();
+                var mobileMenu = document.getElementById('bw-mobile-menu');
+                var icon = toggleBtn.querySelector('.material-symbols-outlined');
+                
+                if (mobileMenu) {
+                    if (typeof jQuery !== 'undefined') {
+                        jQuery(mobileMenu).slideToggle(300, function() {
+                            if (icon) {
+                                icon.textContent = jQuery(mobileMenu).is(':visible') ? 'close' : 'menu';
+                            }
+                        });
+                    } else {
+                        if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
+                            mobileMenu.style.display = 'block';
+                            if (icon) icon.textContent = 'close';
+                        } else {
+                            mobileMenu.style.display = 'none';
+                            if (icon) icon.textContent = 'menu';
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </header>
