@@ -1,0 +1,390 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Bizwoke | Premier UAE Teaching Recruitment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#f9e8ff",
+                        "tertiary-fixed-dim": "#c8c5d3",
+                        "on-surface": "#1b1c1c",
+                        "surface-variant": "#e4e2e2",
+                        "inverse-surface": "#303031",
+                        "primary-container": "#a100ff",
+                        "outline": "#807287",
+                        "on-secondary-container": "#6b547e",
+                        "surface": "#fbf9f9",
+                        "surface-container-highest": "#e4e2e2",
+                        "secondary-fixed": "#f1daff",
+                        "background": "#fbf9f9",
+                        "on-background": "#1b1c1c",
+                        "tertiary-fixed": "#e4e0ef",
+                        "primary-fixed-dim": "#e1b6ff",
+                        "tertiary": "#53525e",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#8e00e2",
+                        "primary": "#a100ff",
+                        "surface-container-high": "#e9e8e7",
+                        "outline-variant": "#d1c1d8",
+                        "on-tertiary-fixed-variant": "#474551",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#6d557f",
+                        "surface-dim": "#dbdad9",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#eaccfe",
+                        "on-surface-variant": "#4e4256",
+                        "tertiary-container": "#6c6a77",
+                        "on-primary-fixed-variant": "#6c00ae",
+                        "inverse-primary": "#e1b6ff",
+                        "secondary-fixed-dim": "#d9bced",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#f2daff",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#efeded",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-secondary-fixed": "#261238",
+                        "surface-container-low": "#f5f3f3",
+                        "on-tertiary-container": "#f0ecfb",
+                        "surface-bright": "#fbf9f9",
+                        "on-tertiary-fixed": "#1b1a25",
+                        "on-secondary-fixed-variant": "#543d66",
+                        "on-primary-fixed": "#2e004e",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.8rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "stack-xl": "48px",
+                        "section-gap": "96px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .bento-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(161, 0, 255, 0.12);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-white overflow-x-hidden">
+<!-- Navigation -->
+<header class="bg-surface-container-lowest sticky top-0 z-50 shadow-sm transition-all duration-300">
+<nav class="flex justify-between items-center h-20 px-margin-desktop max-w-[1200px] mx-auto">
+<div class="flex items-center">
+<a class="flex-shrink-0" href="/">
+<img alt="Bizwoke Nova Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLvAi1Jhs5hN3MqHk7CLF-vxRgfiqeANd6Jo1FDfPmve49rnt0D0RoZwSqIvOqpWNx4-WAYVHQWuhvB8J_sJP-buSFee-NXLEcZQVPRVAqvMqtN4-09Zrvk8nKBuh0dAgBfwLUUNB70cTlISHKzLarKHKlGott2ct5QKR_Gp67_3VS3jSahNFuY1xqyQHyz44I9sY5n70r5D58_naTADHFxKGrOZAD8JrBaHuwyHuMi_1edETD8eW8IefSI">
+</a>
+</div>
+<div class="hidden lg:flex items-center gap-8">
+<div class="group relative"><button class="flex items-center gap-1 font-label-md text-on-surface-variant hover:text-primary transition-colors">
+<span class="">Candidate</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+<div class="absolute top-full left-0 mt-1 w-48 bg-surface-container-lowest rounded-lg shadow-xl border border-outline-variant opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+<div class="py-2">
+<a href="#" class="block px-4 py-2 text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors">Jobs By Category</a>
+<a href="#" class="block px-4 py-2 text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors">Careers Blogs</a>
+<a href="#" class="block px-4 py-2 text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors">Subscriptions</a>
+</div>
+</div></div>
+<div class="group relative"><button class="flex items-center gap-1 font-label-md text-on-surface-variant hover:text-primary transition-colors">
+<span class="">Employer</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+<div class="absolute top-full left-0 mt-1 w-48 bg-surface-container-lowest rounded-lg shadow-xl border border-outline-variant opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+<div class="py-2">
+<a href="#" class="block px-4 py-2 text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors">Start Hiring</a>
+<a href="#" class="block px-4 py-2 text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors">Subscriptions</a>
+</div>
+</div></div>
+<div class="group relative"><button class="flex items-center gap-1 font-label-md text-on-surface-variant hover:text-primary transition-colors">
+<span class="">Company</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+<div class="absolute top-full left-0 mt-1 w-48 bg-surface-container-lowest rounded-lg shadow-xl border border-outline-variant opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+<div class="py-2">
+<a href="#" class="block px-4 py-2 text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors">About Us</a>
+<a href="#" class="block px-4 py-2 text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors">Contact Us</a>
+<a href="#" class="block px-4 py-2 text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors">Our Team</a>
+</div>
+</div></div>
+<a class="font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Services</a>
+<a class="font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">English</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="font-label-md text-on-surface-variant hover:text-primary transition-colors px-6 py-2 border border-primary rounded-full" href="#">Login</a>
+<a class="bg-primary text-on-primary font-label-md px-8 py-2.5 rounded-full hover:opacity-90 transition-all active:scale-95" href="#">Register</a>
+<button class="lg:hidden text-primary p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[600px] flex items-center overflow-hidden py-24">
+<div class="absolute inset-0 z-0">
+<img alt="Modern Educational Facility" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXiGfKLXYyxiT4xBc2bLfY-7mb9m8s9JOlE_eOKYBHkQ-p7Z7lKC9w3sbpDG6Ws_E3HGPyWm-9Xx16XjaUN95aaVNVDzecYHjXHFE_jNJtrcUscUxecN5-BV3o0SmWtdqOBxS4NG6kVW8_nR_pfkQXWWCqJam9HW6_45cWR0PFReQpV40kWmKelPGYheJo8pvMxQIaGMoCe2ls_N8lLsKv2vlDAXNHQbScLjWxWIcYo6Af3qrseagucI_WZe-cTWYR6HFoJuSVRAA">
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full px-margin-desktop max-w-[1200px] mx-auto">
+<div class="max-w-2xl">
+<h1 class="font-display-lg text-display-lg text-on-background mb-8 leading-tight tracking-tight">
+                    Discover <span class="text-primary">Best&nbsp; Guru in Education</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    Connecting World-Class Educators to Exceptional Opportunities across the Middle East's premier educational landscape.
+                </p>
+</div>
+</div>
+</section>
+<!-- Search Card Section -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-[1200px] mx-auto px-margin-desktop">
+<div class="bg-white rounded-xl shadow-xl border border-outline-variant w-full p-12 md:p-16">
+<div class="flex items-center gap-2 mb-8">
+<h3 class="font-headline-md text-on-surface">Search candidate database</h3>
+<span class="material-symbols-outlined text-primary text-[24px]">info</span>
+</div>
+<div class="flex flex-col md:flex-row items-end gap-6">
+<div class="flex-1 space-y-3 w-full">
+<label class="font-label-sm text-on-surface-variant uppercase tracking-wider">Select job title</label>
+<div class="relative">
+<select class="w-full px-4 py-4 rounded-lg bg-surface-container-low border border-outline-variant appearance-none focus:ring-2 focus:ring-primary focus:border-primary text-body-md text-on-surface-variant transition-all">
+<option disabled="" selected="">Eg. Mathematics Teacher</option>
+<option>English Teacher</option>
+<option>Science Teacher</option>
+<option>Art Teacher</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">unfold_more</span>
+</div>
+</div>
+<div class="flex-1 space-y-3 w-full">
+<label class="font-label-sm text-on-surface-variant uppercase tracking-wider">Select city</label>
+<div class="relative">
+<select class="w-full px-4 py-4 rounded-lg bg-surface-container-low border border-outline-variant appearance-none focus:ring-2 focus:ring-primary focus:border-primary text-body-md text-on-surface-variant transition-all">
+<option disabled="" selected="">Pick Your City</option>
+<option>Abu Dhabi</option>
+<option>Dubai</option>
+<option>Sharjah</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">unfold_more</span>
+</div>
+</div>
+<button class="bg-primary text-white h-[60px] w-full md:w-[60px] rounded-lg flex items-center justify-center hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Get To Know Us Section -->
+<section class="bg-surface-container-lowest py-24">
+<div class="max-w-[1200px] mx-auto px-margin-desktop text-center">
+<span class="font-label-sm text-primary uppercase tracking-[0.2em] mb-4 block">About Bizwoke</span>
+<h2 class="font-display-lg text-display-lg text-on-background mb-12">Get To Know Us</h2>
+<div class="max-w-4xl mx-auto space-y-8">
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-loose">
+                    Bizwoke is a boutique student centred company specialising in education consultancy, professional development, teacher recruitment, the design and furnishing of modern educational spaces for students.
+                </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-loose">
+                    Our team consists of educators, project managers, designers, consultants and school leaders who all have previous experience in the field of education and are driven by one mission – to create student centred learning environments that stimulate and inspire.
+                </p>
+</div>
+</div>
+</section>
+<!-- Explore What We Do - Bento Grid -->
+<section class="py-24 bg-surface">
+<div class="max-w-[1200px] mx-auto px-margin-desktop">
+<div class="text-center mb-16">
+<span class="font-label-sm text-primary uppercase tracking-[0.2em] mb-4 block">Our Expertise</span>
+<h2 class="font-display-lg text-display-lg text-on-background">Explore What We Do</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Service Cards using clipping from https://lh3.googleusercontent.com/aida/AP1WRLu63GNYefQ-x9KBMUiQdVYb_Hst1zEY2UWbpGhKXnU-C_juo2kp1JXL4KRXPFChkNQuCWpTj5Df9WgWZJyJ8ll7hAItsCujPrU1YK1ldoGtyHUqeH54yGvQ4FXZ4qbNMguDB0JPqygm9jzUK6hJjFtDpihXkjuDQjfM9Hw8xToljgrpvGTfdtFk09pXd8IhUxuKFsNXh96Ze2R5iRtwR8K2YwS4ekP9msXKAdnJDoWpCxHRPw9UXuGZCYY -->
+<a class="group relative overflow-hidden rounded-xl aspect-[3/4] bento-card" href="#">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida/AP1WRLu63GNYefQ-x9KBMUiQdVYb_Hst1zEY2UWbpGhKXnU-C_juo2kp1JXL4KRXPFChkNQuCWpTj5Df9WgWZJyJ8ll7hAItsCujPrU1YK1ldoGtyHUqeH54yGvQ4FXZ4qbNMguDB0JPqygm9jzUK6hJjFtDpihXkjuDQjfM9Hw8xToljgrpvGTfdtFk09pXd8IhUxuKFsNXh96Ze2R5iRtwR8K2YwS4ekP9msXKAdnJDoWpCxHRPw9UXuGZCYY&quot;); background-position: 0% 0%;"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300"></div>
+<div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+<h3 class="font-headline-md text-xl mb-2">Educational Furniture &amp; Design</h3>
+<p class="text-label-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-3">Revolutionizing learning environments through innovative design and high-quality educational infrastructure solutions.</p>
+</div>
+</a>
+<a class="group relative overflow-hidden rounded-xl aspect-[3/4] bento-card" href="#">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida/AP1WRLu63GNYefQ-x9KBMUiQdVYb_Hst1zEY2UWbpGhKXnU-C_juo2kp1JXL4KRXPFChkNQuCWpTj5Df9WgWZJyJ8ll7hAItsCujPrU1YK1ldoGtyHUqeH54yGvQ4FXZ4qbNMguDB0JPqygm9jzUK6hJjFtDpihXkjuDQjfM9Hw8xToljgrpvGTfdtFk09pXd8IhUxuKFsNXh96Ze2R5iRtwR8K2YwS4ekP9msXKAdnJDoWpCxHRPw9UXuGZCYY&quot;); background-position: 33% 0%;"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300"></div>
+<div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+<h3 class="font-headline-md text-xl mb-2">Teacher Recruitment</h3>
+<p class="text-label-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-3">Connecting world-class educators with top-tier educational institutions across the Middle East.</p>
+</div>
+</a>
+<a class="group relative overflow-hidden rounded-xl aspect-[3/4] bento-card" href="#">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida/AP1WRLu63GNYefQ-x9KBMUiQdVYb_Hst1zEY2UWbpGhKXnU-C_juo2kp1JXL4KRXPFChkNQuCWpTj5Df9WgWZJyJ8ll7hAItsCujPrU1YK1ldoGtyHUqeH54yGvQ4FXZ4qbNMguDB0JPqygm9jzUK6hJjFtDpihXkjuDQjfM9Hw8xToljgrpvGTfdtFk09pXd8IhUxuKFsNXh96Ze2R5iRtwR8K2YwS4ekP9msXKAdnJDoWpCxHRPw9UXuGZCYY&quot;); background-position: 66% 0%;"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300"></div>
+<div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+<h3 class="font-headline-md text-xl mb-2">Educational Consultancy</h3>
+<p class="text-label-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-3">Providing expert guidance on curriculum development, school management, and educational strategy.</p>
+</div>
+</a>
+<a class="group relative overflow-hidden rounded-xl aspect-[3/4] bento-card" href="#">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida/AP1WRLu63GNYefQ-x9KBMUiQdVYb_Hst1zEY2UWbpGhKXnU-C_juo2kp1JXL4KRXPFChkNQuCWpTj5Df9WgWZJyJ8ll7hAItsCujPrU1YK1ldoGtyHUqeH54yGvQ4FXZ4qbNMguDB0JPqygm9jzUK6hJjFtDpihXkjuDQjfM9Hw8xToljgrpvGTfdtFk09pXd8IhUxuKFsNXh96Ze2R5iRtwR8K2YwS4ekP9msXKAdnJDoWpCxHRPw9UXuGZCYY&quot;); background-position: 100% 0%;"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300"></div>
+<div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
+<h3 class="font-headline-md text-xl mb-2">Online Learning</h3>
+<p class="text-label-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-3">Empowering students and educators with cutting-edge digital learning platforms and resources.</p>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- Partners Section -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-[1200px] mx-auto px-margin-desktop text-center">
+<span class="font-label-sm text-outline uppercase tracking-[0.2em] mb-12 block">Who We Work With</span>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-xl items-center justify-items-center">
+<img alt="Partner Logos 1" class="h-32 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/AP1WRLvvK5eed3ZkGBtVDy7WcZn86xo2jh7UyDPXZnQ17bNk05I_5MODU4zUSzZh9ZzycrYg-LvFg1PdSwKSqnfsulynZPDzzDnRl_mCiE8O1oKXVlfPkynv1UPkv3OnFL3YwRZTrbYGou2mbRZzCzgUMubXFxzceJ6Ko_rw_R0lojFJ4IXQliHmPv6OxXrttriIzDGZsyqdC5VYoWaVE7s_qPp4ZGqdUI3AcjYo5pClK2HalZ33kgXtQ_B8tRE">
+<img alt="Partner Logos 2" class="h-32 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/AP1WRLsnP3PuP7bvPy5M1KHKTQsRj2XsmOW7hNjgwcuC8OD6kNHRFUHBp2UJgYZcuiVNImxAr4N3uklppvMYpM0PfG1U0MPPzuYpxANkclYSrZFBg7PVPCLzZKtRxWppuJbXhyB_aOnczWhq8p6vb9XOEc8pUnUszJQitBB8jlciX5YM8SmsIVHbKkeXP0K0hZvvCcxFsLbR_RIokf31n6aYESN6mR0bacJsLmT-2Y0p0levKCyB0s8LebHkYkY">
+<img alt="Partner Logos 3" class="h-32 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/AP1WRLvCfhxL9ELjtJnjzFpsLCgidArxzCDT_4qXEqZ03OGhi5elhM9be3AWYL27rrxBuPj3MYwpDRGaFnXX3lmMNcZL0Md0RC1Gae9ofkJp4_fane2y_XrsMPC6SuSi0hHsMJHUfeTRRD-mmZUbjJqyvvGqKEdhKxdf_jngjpeixDs1_QXQBmMADtmo4wD-MEx8FJMddEQYeya0SMQNhZfsOz6UbUrLH04dJIws11H4Oe0I35LMHTEvoEnhTMQ">
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface text-inverse-on-surface pt-24 pb-12 border-t border-outline">
+<div class="max-w-[1200px] mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-stack-xl mb-16">
+<!-- Brand & Newsletter -->
+<div class="space-y-8">
+<img alt="Bizwoke Logo" class="h-10 w-auto invert opacity-90" src="https://lh3.googleusercontent.com/aida/AP1WRLvAi1Jhs5hN3MqHk7CLF-vxRgfiqeANd6Jo1FDfPmve49rnt0D0RoZwSqIvOqpWNx4-WAYVHQWuhvB8J_sJP-buSFee-NXLEcZQVPRVAqvMqtN4-09Zrvk8nKBuh0dAgBfwLUUNB70cTlISHKzLarKHKlGott2ct5QKR_Gp67_3VS3jSahNFuY1xqyQHyz44I9sY5n70r5D58_naTADHFxKGrOZAD8JrBaHuwyHuMi_1edETD8eW8IefSI">
+<p class="font-body-md text-surface-variant max-w-xs leading-relaxed">
+                Stay Connected with our regular updates by subscribing our newsletter. Premium Recruitment Solutions for professionals.
+            </p>
+<div class="flex gap-2">
+<input class="bg-surface-container text-on-surface rounded-lg px-4 py-2 flex-1 focus:ring-2 focus:ring-primary border-none" placeholder="Email Address" type="email">
+<button class="bg-primary text-on-primary p-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition-all">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center hover:bg-primary transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-white">person</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center hover:bg-primary transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-white">share</span>
+</a>
+</div>
+</div>
+<!-- Useful Links -->
+<div>
+<h4 class="font-headline-md text-[20px] text-white mb-8">Useful Links</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-surface-variant hover:text-primary transition-colors font-label-md" href="#">Home</a></li>
+<li class=""><a class="text-surface-variant hover:text-primary transition-colors font-label-md" href="#">Jobs</a></li>
+<li class=""><a class="text-surface-variant hover:text-primary transition-colors font-label-md" href="#">Companies</a></li>
+<li class=""><a class="text-surface-variant hover:text-primary transition-colors font-label-md" href="#">Employer Solutions</a></li>
+<li class=""><a class="text-surface-variant hover:text-primary transition-colors font-label-md" href="#">Job Seekers</a></li>
+</ul>
+</div>
+<!-- Helpful Resources -->
+<div>
+<h4 class="font-headline-md text-[20px] text-white mb-8">Helpful Resources</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-surface-variant hover:text-primary transition-colors font-label-md" href="#">About Us</a></li>
+<li class=""><a class="text-surface-variant hover:text-primary transition-colors font-label-md" href="#">Contact Us</a></li>
+<li class=""><a class="text-surface-variant hover:text-primary transition-colors font-label-md" href="#">Blog</a></li>
+<li class=""><a class="text-surface-variant hover:text-primary transition-colors font-label-md" href="#">Privacy Policy</a></li>
+<li class=""><a class="text-surface-variant hover:text-primary transition-colors font-label-md" href="#">Terms And Conditions</a></li>
+</ul>
+</div>
+<!-- Contact Us -->
+<div class="space-y-6">
+<h4 class="font-headline-md text-[20px] text-white mb-2">Contact Us</h4>
+<a class="flex items-start gap-4 group" href="tel:+917836055511">
+<span class="material-symbols-outlined text-primary mt-1">call</span>
+<span class="text-surface-variant group-hover:text-primary transition-colors font-label-md">91 7836055511</span>
+</a>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">location_on</span>
+<span class="text-surface-variant font-label-md">3rd Floor, ITHUM TOWER, 307B, A A-40, Sector 62, Noida, Uttar Pradesh 201301</span>
+</div>
+<a class="flex items-start gap-4 group" href="mailto:info@bizwoke.in">
+<span class="material-symbols-outlined text-primary mt-1">mail</span>
+<span class="text-surface-variant group-hover:text-primary transition-colors font-label-md">info@bizwoke.in</span>
+</a>
+</div>
+</div>
+<div class="max-w-[1200px] mx-auto px-margin-desktop pt-8 border-t border-outline flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+<p class="font-label-sm text-surface-variant">© 2026 <a class="text-primary hover:underline" href="#">Bizwoke</a>. All Rights Reserved.</p>
+<div class="flex gap-6">
+<a class="text-surface-variant hover:text-primary font-label-sm" href="#">Privacy</a>
+<a class="text-surface-variant hover:text-primary font-label-sm" href="#">Cookies</a>
+<a class="text-surface-variant hover:text-primary font-label-sm" href="#">Security</a>
+</div>
+</div>
+</footer>
+<script>
+    // Simple scroll header effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        const nav = header.querySelector('nav');
+        if (window.scrollY > 50) {
+            header.classList.add('py-1', 'shadow-md');
+            nav.classList.replace('h-20', 'h-16');
+        } else {
+            header.classList.remove('py-1', 'shadow-md');
+            nav.classList.replace('h-16', 'h-20');
+        }
+    });
+</script>
+
+
+
+
+
+
+</body></html>
