@@ -1,146 +1,140 @@
 @php($notifications = getNotification(\App\Models\Notification::EMPLOYER))
 @php($notificationCount = $notifications->count())
-<header class='container-fluid container-xxl d-flex align-items-stretch justify-content-between'>
-    <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-        <a href="{{ route('front.home') }}"  target="_blank"
-           class="text-decoration-none horizontal-sidebar-logo d-flex align-items-center {{ checkLanguageSession() == 'ar' ? 'ps-xl-8' : 'pe-xl-8' }}">
-            <div class="image image-mini {{ checkLanguageSession() == 'ar' ? 'ms-3' : 'me-3' }}">
-                <img src="{{getLogoUrl()}}"
-                     class="img-fluid" alt="profile image">
+
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between">
+    
+    {{-- Left Side: Logo & Navigation --}}
+    <div class="flex items-center gap-8">
+        {{-- Logo --}}
+        <a href="{{ route('front.home') }}" target="_blank" class="flex items-center gap-3 no-underline">
+            <div class="w-9 h-9 rounded-lg bg-purple-50 flex items-center justify-center overflow-hidden">
+                <img src="{{ getLogoUrl() }}" class="max-h-8 w-auto object-contain" alt="{{ getAppName() }}">
             </div>
-            <span class="text-gray-900 fs-4 d-none d-sm-block"> {{ getAppName() }}</span>
+            <span class="text-gray-900 font-extrabold text-lg tracking-tight hidden sm:block">
+                {{ getAppName() }}
+            </span>
         </a>
-    </div>
-    <div class="d-flex align-items-stretch justify-content-xl-between justify-content-end flex-grow-1">
-        <nav class="navbar navbar-expand-xl navbar-light horizontal-sidebar d-xl-flex d-block align-items-stretch py-3 py-xl-0"
-             id="nav-header">
+        
+        {{-- Desktop Navigation Menu --}}
+        <nav class="hidden lg:flex items-center" id="nav-header">
             @include('employer.layouts.sidebar')
         </nav>
-        <ul class="nav align-items-stretch flex-nowrap">
-            <li class="px-xxl-3 px-2 d-flex align-items-stretch">
-                <a href="{{ route('theme.mode') }}" class="d-flex align-items-center" >
-                    <i class="fas user-check-icon {{ getLoggedInUser()->theme_mode ? 'fa-sun' : 'fa-moon' }} fs-2"></i>
-                </a>
-            </li>
-            <li class="px-xxl-3 px-2 d-flex align-items-stretch">
-                <div class="dropdown custom-dropdown d-flex align-items-stretch">
-                    <button class="btn dropdown-toggle hide-arrow p-0 d-flex align-items-center"
-                            type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="position-relative">
-                            <i class="fa-solid fa-bell text-primary fs-2"></i>
-                            @if($notificationCount > 0)
-                                <span class="position-absolute notification-count top-0 start-100 translate-middle badge badge-circle bg-danger" id="counter">
-                    {{ ($notificationCount) }}
-                    <span class="visually-hidden">{{ __('messages.unread_messages') }}</span>
-                            @endif
-                        </div>
-                    </button>
-                    <div class="dropdown-menu py-0" aria-labelledby="dropdownMenuButton1">
-                        <div class="{{ checkLanguageSession() == 'ar' ? 'text-end' : 'text-start' }} border-bottom py-4 px-7">
-                            <h3 class="text-gray-900 mb-0">{{__('messages.notification.notifications')}}</h3>
-                        </div>
-                        <div class="px-7 mt-5 inner-scroll height-270">
-                            @if($notificationCount > 0)
-                                @foreach($notifications as $notification)
-                                    <div class="d-flex position-relative mb-5 readNotification cursor-pointer"
-                                         data-id="{{ $notification->id }}" id="readNotification">
-                                                            <span class="{{ checkLanguageSession() == 'ar' ? 'ms-5' : 'me-5' }} text-primary fs-2 icon-label">
-                                                                <i class="{{ getNotificationIcon($notification->type) }}"></i></span>
-                                        <div>
-                                            <h5 class="text-gray-900 fs-6 mb-2">{{$notification->title}}</h5>
-                                            <h6 class="text-gray-600 fs-small fw-light mb-0">
-                                                {{ \Carbon\Carbon::parse($notification->created_at)->diffForHumans(null, true)}}</h6>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                @else
-                                    <div class="empty-state fs-6 text-gray-800 fw-bold text-center mt-5" data-height="400">
-                                        <p>{{ __('messages.notification.empty_notifications') }}</p>
-                                    </div>
-                                @endif
-                                <div class="empty-state fs-6 text-gray-800 fw-bold text-center mt-5 d-none"
-                                     data-height="400">
-                                    <p>{{ __('messages.notification.empty_notifications') }}</p>
-                                </div>
-                        </div>
-                        @if($notificationCount > 0)
-                            <div class="text-center border-top p-4">
-                                <h5 class="text-primary mb-0 fs-5 cursor-pointer"
-                                    id="readAllNotification">{{ __('messages.notification.mark_all_as_read') }}</h5>
-                            </div>
-                        @endif
-                    </div>
-
-                </div>
-            </li>
-
-            <li class="px-xxl-3 px-2 d-flex align-items-stretch">
-                <div class="dropdown dropdown-transparent d-flex align-items-stretch">
-                    <button class="btn dropdown-toggle px-0 text-gray-600 d-flex align-items-center" type="button"
-                            id="dropdownMenuButton1" data-bs-auto-close="outside"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="image image-circle image-mini d-flex align-items-center {{ checkLanguageSession() == 'ar' ? 'ms-sm-3' : 'me-sm-3' }}">
-                            <img src="{{  Auth::user()->company->company_url }}"
-                                 class="img-fluid" alt="profile image">
-                        </div>
-                        {{\Illuminate\Support\Facades\Auth::user()->full_name}}
-                        {{--                        <i class="fa-solid fa-angle-down ms-2"></i>--}}
-                    </button>
-                    <div class="dropdown-menu py-7 pb-4" aria-labelledby="dropdownMenuButton1"
-                         data-bs-auto-close="outside">
-                        <div class="text-center border-bottom pb-5 ">
-                            <div class="image image-circle image-tiny mb-5">
-                                <img src="{{ getLoggedInUser()->avatar }}" class="img-fluid" alt="profile image">
-                            </div>
-                            <h3 class="text-gray-900">{{\Illuminate\Support\Facades\Auth::user()->full_name}}</h3>
-                            <h4 class="mb-0 fw-400 fs-6">{{\Illuminate\Support\Facades\Auth::user()->email}}</h4>
-                        </div>
-                        <ul class="pt-4 pe-0">
-                            <li>
-                                <a href="javascript:void(0)" class="dropdown-item text-gray-900 editProfileModal {{ checkLanguageSession() == 'ar' ? 'text-end' : '' }}"
-                                   data-id="{{ getLoggedInUserId() }}">
-                                     <span class="dropdown-icon {{ checkLanguageSession() == 'ar' ? 'ms-4' : 'me-4' }} text-gray-600">
-                                        <i class="fa-solid fa-user"></i>
-                                     </span> {{ __('messages.user.edit_profile') }}</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item text-gray-900 changePasswordModal {{ checkLanguageSession() == 'ar' ? 'text-end' : '' }}"
-                                   href="javascript:void(0)" data-id="{{ getLoggedInUserId() }}">
-                                    <span class="dropdown-icon {{ checkLanguageSession() == 'ar' ? 'ms-4' : 'me-4' }} text-gray-600">
-                                        <i class="fa-solid fa-lock"></i>
-                                    </span> {{ (Str::limit(__('messages.user.change_password'),20,'...')) }}
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item text-gray-900 changeLanguageModal {{ checkLanguageSession() == 'ar' ? 'text-end' : '' }}"
-                                   href="javascript:void(0)" data-id="{{ getLoggedInUserId() }}">
-                                    <span class="dropdown-icon {{ checkLanguageSession() == 'ar' ? 'ms-4' : 'me-4' }} text-gray-600">
-                                        <i class="fa-solid fa-globe"></i>
-                                    </span> {{ (Str::limit(__('messages.user_language.change_language'),20,'...')) }}
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item text-gray-900 {{ checkLanguageSession() == 'ar' ? 'text-end' : '' }}" href="{{ url('logout') }}"
-                                   onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
-                                    <span class="dropdown-icon {{ checkLanguageSession() == 'ar' ? 'ms-4' : 'me-4' }} text-gray-600">
-                                        <i class="fa-solid fa-right-from-bracket"></i>
-                                    </span> {{ __('messages.user.logout') }}
-                                </a>
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-            <li class="d-flex align-items-center">
-                <button type="button" class="btn px-0 horizontal-menubar d-block d-xl-none text-gray-600">
-                    <i class="fa-solid fa-bars fs-1"></i>
-                </button>
-            </li>
-        </ul>
     </div>
-</header>
+
+    {{-- Right Side: Actions & Profile --}}
+    <div class="flex items-center gap-4">
+        
+        {{-- Dark Mode Toggle --}}
+        <a href="{{ route('theme.mode') }}" class="w-10 h-10 rounded-lg flex items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-[#a100ff] transition-all">
+            <span class="material-symbols-outlined text-2xl">
+                {{ getLoggedInUser()->theme_mode ? 'light_mode' : 'dark_mode' }}
+            </span>
+        </a>
+
+        {{-- Notifications Dropdown --}}
+        <div class="dropdown relative">
+            <button class="dropdown-toggle w-10 h-10 rounded-lg flex items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-[#a100ff] transition-all relative border-0 bg-transparent"
+                    type="button" id="notificationDropdownBtn"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="material-symbols-outlined text-2xl">notifications</span>
+                @if($notificationCount > 0)
+                    <span class="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full" id="counter"></span>
+                @endif
+            </button>
+            <div class="dropdown-menu dropdown-menu-end border-0 shadow-xl rounded-xl p-0 w-80 bg-white mt-2" aria-labelledby="notificationDropdownBtn" style="margin: 0;">
+                <div class="p-4 border-b border-gray-100 flex items-center justify-between">
+                    <h3 class="text-sm font-bold text-gray-900">{{__('messages.notification.notifications')}}</h3>
+                    @if($notificationCount > 0)
+                        <span class="px-2 py-0.5 bg-red-50 text-red-600 rounded-full text-xs font-semibold">{{ $notificationCount }} New</span>
+                    @endif
+                </div>
+                <div class="max-h-72 overflow-y-auto divide-y divide-gray-50">
+                    @if($notificationCount > 0)
+                        @foreach($notifications as $notification)
+                            <div class="p-4 flex gap-3 hover:bg-gray-50 transition-all cursor-pointer readNotification"
+                                 data-id="{{ $notification->id }}">
+                                <div class="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center text-[#a100ff] shrink-0">
+                                    <i class="{{ getNotificationIcon($notification->type) }} text-xs"></i>
+                                </div>
+                                <div class="min-w-0 flex-1">
+                                    <p class="text-xs font-medium text-gray-900 truncate">{{ $notification->title }}</p>
+                                    <p class="text-[10px] text-gray-400 mt-0.5">
+                                        {{ \Carbon\Carbon::parse($notification->created_at)->diffForHumans(null, true) }}
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="p-6 text-center text-gray-500">
+                            <span class="material-symbols-outlined text-4xl text-gray-300 mb-2">notifications_off</span>
+                            <p class="text-xs font-medium">{{ __('messages.notification.empty_notifications') }}</p>
+                        </div>
+                    @endif
+                </div>
+                @if($notificationCount > 0)
+                    <div class="p-3 border-t border-gray-100 text-center">
+                        <button class="text-xs font-bold text-[#a100ff] hover:text-[#7000b0] bg-transparent border-0 cursor-pointer"
+                                id="readAllNotification">
+                            {{ __('messages.notification.mark_all_as_read') }}
+                        </button>
+                    </div>
+                @endif
+            </div>
+        </div>
+
+        {{-- Profile Dropdown --}}
+        <div class="dropdown relative">
+            <button class="dropdown-toggle flex items-center gap-2 px-3 py-1.5 rounded-lg border-0 bg-transparent hover:bg-gray-50 text-gray-700 transition-all" type="button"
+                    id="profileDropdownBtn" data-bs-auto-close="outside"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{{ Auth::user()->company->company_url }}"
+                     class="w-8 h-8 rounded-full object-cover border-2 border-[#a100ff]" alt="profile image">
+                <span class="text-sm font-semibold hidden md:block">{{ Auth::user()->full_name }}</span>
+                <span class="material-symbols-outlined text-gray-400 text-lg hidden md:block">expand_more</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end border-0 shadow-xl rounded-xl p-0 w-64 bg-white mt-2" aria-labelledby="profileDropdownBtn"
+                 data-bs-auto-close="outside" style="margin: 0;">
+                <div class="p-4 border-b border-gray-100 text-center">
+                    <img src="{{ getLoggedInUser()->avatar }}" class="w-16 h-16 rounded-full object-cover mx-auto border-2 border-purple-100 mb-2" alt="profile image">
+                    <h3 class="text-sm font-bold text-gray-900">{{ Auth::user()->full_name }}</h3>
+                    <p class="text-xs text-gray-400 mt-0.5 truncate">{{ Auth::user()->email }}</p>
+                </div>
+                <div class="p-2 divide-y divide-gray-50">
+                    <div class="py-1">
+                        <a href="javascript:void(0)" class="flex items-center gap-3 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-purple-50 hover:text-[#a100ff] rounded-lg no-underline editProfileModal"
+                           data-id="{{ getLoggedInUserId() }}">
+                            <span class="material-symbols-outlined text-lg text-gray-400">person</span>
+                            {{ __('messages.user.edit_profile') }}
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-purple-50 hover:text-[#a100ff] rounded-lg no-underline changePasswordModal"
+                           href="javascript:void(0)" data-id="{{ getLoggedInUserId() }}">
+                            <span class="material-symbols-outlined text-lg text-gray-400">lock</span>
+                            {{ __('messages.user.change_password') }}
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-purple-50 hover:text-[#a100ff] rounded-lg no-underline changeLanguageModal"
+                           href="javascript:void(0)" data-id="{{ getLoggedInUserId() }}">
+                            <span class="material-symbols-outlined text-lg text-gray-400">translate</span>
+                            {{ __('messages.user_language.change_language') }}
+                        </a>
+                    </div>
+                    <div class="py-1">
+                        <a class="flex items-center gap-3 px-3 py-2 text-xs font-medium text-red-600 hover:bg-red-50 rounded-lg no-underline" href="{{ url('logout') }}"
+                           onclick="event.preventDefault(); localStorage.clear(); document.getElementById('logout-form').submit();">
+                            <span class="material-symbols-outlined text-lg text-red-400">logout</span>
+                            {{ __('messages.user.logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
+                            {{ csrf_field() }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Mobile Menu Toggle --}}
+        <button type="button" class="w-10 h-10 rounded-lg flex lg:hidden items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-[#a100ff] transition-all border-0 bg-transparent horizontal-menubar">
+            <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+    </div>
+</div>
 <div class="bg-overlay" id="horizontal-menubar-overly"></div>

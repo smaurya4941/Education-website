@@ -8,8 +8,9 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{{ getSettingValue('favicon') }}"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/third-party.css') }}">
     @if(getLoggedInUser()->theme_mode)
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/custom-dark.css') }}">
@@ -21,6 +22,103 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
         @endif
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/custom.css') }}">
+    
+    {{-- Tailwind CSS with Bizwoke Design Tokens --}}
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#f9e8ff",
+                        "tertiary-fixed-dim": "#c8c5d3",
+                        "on-surface": "#1b1c1c",
+                        "surface-variant": "#e4e2e2",
+                        "inverse-surface": "#303031",
+                        "primary-container": "#a100ff",
+                        "outline": "#807287",
+                        "on-secondary-container": "#6b547e",
+                        "surface": "#fbf9f9",
+                        "surface-container-highest": "#e4e2e2",
+                        "secondary-fixed": "#f1daff",
+                        "background": "#fbf9f9",
+                        "on-background": "#1b1c1c",
+                        "tertiary-fixed": "#e4e0ef",
+                        "primary-fixed-dim": "#e1b6ff",
+                        "tertiary": "#53525e",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#8e00e2",
+                        "primary": "#a100ff",
+                        "surface-container-high": "#e9e8e7",
+                        "outline-variant": "#d1c1d8",
+                        "on-tertiary-fixed-variant": "#474551",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#6d557f",
+                        "surface-dim": "#dbdad9",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#eaccfe",
+                        "on-surface-variant": "#4e4256",
+                        "tertiary-container": "#6c6a77",
+                        "on-primary-fixed-variant": "#6c00ae",
+                        "inverse-primary": "#e1b6ff",
+                        "secondary-fixed-dim": "#d9bced",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#f2daff",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#efeded",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-secondary-fixed": "#261238",
+                        "surface-container-low": "#f5f3f3",
+                        "on-tertiary-container": "#f0ecfb",
+                        "surface-bright": "#fbf9f9",
+                        "on-tertiary-fixed": "#1b1a25",
+                        "on-secondary-fixed-variant": "#543d66",
+                        "on-primary-fixed": "#2e004e",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.8rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "sans": ["Plus Jakarta Sans", "Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bw-primary: #a100ff;
+            --bw-primary-dark: #7000b0;
+            --bw-primary-light: #f2daff;
+            --bw-primary-ultra-light: #faf7ff;
+            --bw-on-primary: #ffffff;
+            --bw-surface: #ffffff;
+            --bw-surface-low: #f5f3f3;
+            --bw-on-surface: #1b1c1c;
+            --bw-on-surface-variant: #4e4256;
+            --bw-outline: #807287;
+            --bw-outline-variant: #d1c1d8;
+            --bw-dark-bg: #1a0028;
+            --bw-font: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            --bw-radius-sm: 8px;
+            --bw-radius-md: 12px;
+            --bw-radius-lg: 16px;
+            --bw-radius-xl: 24px;
+            --bw-shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --bw-shadow-md: 0 4px 20px rgba(161,0,255,0.10), 0 2px 8px rgba(0,0,0,0.06);
+            --bw-shadow-lg: 0 12px 40px rgba(161,0,255,0.18), 0 4px 12px rgba(0,0,0,0.08);
+        }
+        body {
+            font-family: var(--bw-font);
+        }
+    </style>
     @livewireStyles
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/rappasoft/livewire-tables/css/laravel-livewire-tables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/rappasoft/livewire-tables/css/laravel-livewire-tables-thirdparty.min.css') }}">
@@ -82,10 +180,10 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script src="{{ mix('js/third-party.js') }}"></script>
 <script src="{{ mix('js/pages.js') }}"></script>
-<body class="overflow-x-hidden">
+<body class="overflow-x-hidden bg-gray-50/50">
 <div class="d-flex flex-column flex-root">
     <div class="d-flex flex-column flex-column-fluid">
-        <div class="header fixed-header">
+        <div class="header fixed-header bg-white border-b border-gray-100 shadow-sm !h-[72px] !flex !items-center">
             @include('employer.layouts.header')
         </div>
         <div class="theme-wrapper d-flex flex-column flex-row-fluid">

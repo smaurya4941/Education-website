@@ -6,41 +6,50 @@
     <link rel="stylesheet" href="{{ asset('assets/css/daterangepicker.css') }}">
 @endpush
 @section('content')
+    <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h1 class="text-2xl font-extrabold text-gray-900 tracking-tight">{{ __('messages.employer_dashboard.dashboard') }}</h1>
+            <p class="text-sm text-gray-500 mt-1">Welcome back! Manage your jobs, track applications, and hire top talent.</p>
+        </div>
+    </div>
+
     <livewire:employer-dashboard lazy/>
 
-    <div class="card card-xl-stretch mb-xl-8">
+    <div class="bg-white border border-gray-100 rounded-xl shadow-sm mb-8 overflow-hidden">
         <!--begin::Header-->
-        <div class="card-header border-0 pt-5">
-            <h3 class="card-title align-items-start flex-column">
-                                    <span
-                                            class="card-label fs-3 mb-1">{{ __('messages.job_applications') }}</span>
+        <div class="p-6 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+                <span class="material-symbols-outlined text-[#a100ff]">bar_chart</span>
+                {{ __('messages.job_applications') }}
             </h3>
-            <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="row justify-content-end">
-                    <div class="col-lg-4 col-md-4 col-xl-3 col-sm-4 mt-3 mt-md-0 ">
+            <div class="w-full lg:w-auto">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3">
+                    <div class="w-full sm:w-48">
                         <div class="card-header-action w-100">
                             {{  Form::select('jobs', $jobStatus, null, ['id' => 'jobStatus', 'class' => 'form-control status-filter', 'placeholder' => __('messages.flash.select_job')]) }}
                         </div>
                     </div>
-                    <div class="col-lg-4  col-md-4 col-xl-3 col-sm-4 mt-3 mt-md-0">
+                    <div class="w-full sm:w-48">
                         <div class="card-header-action w-100">
                             {{  Form::select('gender', getTranslatedData($gender), null, ['id' => 'gender', 'class' => 'form-control status-filter', 'placeholder' => __('messages.company.select_gender')]) }}
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-xl-4 col-sm-4 mt-0">
-                        <div id="timeRange" class="time_range time_range_width w-30 border rounded-2 p-3">
-                            <i class="far fa-calendar-alt"
-                               aria-hidden="true"></i>&nbsp;&nbsp;<span></span> <b
-                                    class="caret"></b>
+                    <div class="w-full sm:w-auto">
+                        <div id="timeRange" class="time_range border border-gray-200 rounded-lg py-2 px-3 flex items-center justify-between bg-white text-gray-700 hover:border-[#a100ff] transition-all cursor-pointer text-sm gap-2">
+                            <span class="material-symbols-outlined text-gray-400 text-lg">calendar_today</span>
+                            <span class="font-medium text-gray-600"></span>
+                            <b class="caret text-gray-400"></b>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="jobContainer" class="card-body">
-            <canvas id="employerDashboardChart" width="400" height="400"></canvas>
+        <div id="jobContainer" class="p-6">
+            <canvas id="employerDashboardChart" class="w-full" style="max-height: 400px;"></canvas>
         </div>
     </div>
 
-    <livewire:employer-dashboard-table lazy/>
+    <div class="bg-white border border-gray-100 rounded-xl shadow-sm p-6 mb-8">
+        <livewire:employer-dashboard-table lazy/>
+    </div>
 @endsection
