@@ -6,20 +6,20 @@
     <link rel="stylesheet" href="{{ asset('assets/css/daterangepicker.css') }}">
 @endpush
 @section('content')
-    <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-            <h1 class="text-2xl font-extrabold text-gray-900 tracking-tight">{{ __('messages.employer_dashboard.dashboard') }}</h1>
-            <p class="text-sm text-gray-500 mt-1">Welcome back! Manage your jobs, track applications, and hire top talent.</p>
+            <h1 class="text-[32px] font-extrabold text-[#1b1c1c] tracking-tight font-['Plus_Jakarta_Sans'] leading-tight">{{ __('messages.employer_dashboard.dashboard') }}</h1>
+            <p class="text-[15px] text-[#807287] mt-1.5 font-['Plus_Jakarta_Sans']">Welcome back! Manage your jobs, track applications, and hire top talent.</p>
         </div>
     </div>
 
     <livewire:employer-dashboard lazy/>
 
-    <div class="bg-white border border-gray-100 rounded-xl shadow-sm mb-8 overflow-hidden">
+    <div class="bg-white border border-[#ede8f5] rounded-[24px] shadow-[0_4px_20px_rgba(161,0,255,0.06)] mb-8 overflow-hidden">
         <!--begin::Header-->
-        <div class="p-6 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
-                <span class="material-symbols-outlined text-[#a100ff]">bar_chart</span>
+        <div class="p-6 lg:p-8 border-b border-[#ede8f5] flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <h3 class="text-xl font-extrabold text-[#1b1c1c] flex items-center gap-3 font-['Plus_Jakarta_Sans']">
+                <span class="material-symbols-outlined text-[#a100ff] bg-[#faf7ff] p-2 rounded-xl">bar_chart</span>
                 {{ __('messages.job_applications') }}
             </h3>
             <div class="w-full lg:w-auto">
@@ -35,21 +35,21 @@
                         </div>
                     </div>
                     <div class="w-full sm:w-auto">
-                        <div id="timeRange" class="time_range border border-gray-200 rounded-lg py-2 px-3 flex items-center justify-between bg-white text-gray-700 hover:border-[#a100ff] transition-all cursor-pointer text-sm gap-2">
-                            <span class="material-symbols-outlined text-gray-400 text-lg">calendar_today</span>
-                            <span class="font-medium text-gray-600"></span>
-                            <b class="caret text-gray-400"></b>
+                        <div id="timeRange" class="time_range border border-[#d1c1d8] rounded-[14px] py-2.5 px-4 flex items-center justify-between bg-white text-[#4e4256] hover:border-[#a100ff] transition-all cursor-pointer text-[14px] font-medium gap-3 font-['Plus_Jakarta_Sans'] shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+                            <span class="material-symbols-outlined text-[#807287] text-[20px]">calendar_today</span>
+                            <span class="font-semibold text-[#1b1c1c]"></span>
+                            <b class="caret text-[#807287]"></b>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="jobContainer" class="p-6">
+        <div id="jobContainer" class="p-6 lg:p-8">
             <canvas id="employerDashboardChart" class="w-full" style="max-height: 400px;"></canvas>
         </div>
     </div>
 
-    <div class="bg-white border border-gray-100 rounded-xl shadow-sm p-6 mb-8">
+    <div class="bg-white border border-[#ede8f5] rounded-[24px] shadow-[0_4px_20px_rgba(161,0,255,0.06)] p-6 lg:p-8 mb-8">
         <livewire:employer-dashboard-table lazy/>
     </div>
 @endsection
