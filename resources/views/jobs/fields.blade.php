@@ -179,7 +179,7 @@
      </div>
     <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
         {{ Form::label('description', __('messages.job.description').':', ['class' => 'form-label ']) }}<span
-                class="required"></span>
+                class="required"></span>    
         <div id="details"></div>
         {{ Form::hidden('description', null, ['id' => 'job_desc']) }}
     </div>

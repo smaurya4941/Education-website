@@ -98,7 +98,7 @@ class JobController extends AppBaseController
 
         isset($request->saveDraft) ? Flash::success(__('messages.flash.job_draft')) : Flash::success(__('messages.flash.job_save'));
 
-        return redirect(route('job.index'));
+        return redirect(route('job.index'))->with('ask_create_new_job', true);
     }
 
     /**

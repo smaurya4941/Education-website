@@ -23,4 +23,51 @@
     {{Form::hidden('indexEmployeeJobsData',true,['id'=>'indexEmployeeJobsData'])}}
     {{Form::hidden('statusArray',json_encode($statusArray),['id'=>'employerJobStatusArray'])}}
     @include('employer.jobs.reason_show_model')
+
+    @if(session('ask_create_new_job'))
+        @push('scripts')
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    setTimeout(function() {
+                            if (typeof Swal !== 'undefined') {
+                                Swal.fire({
+                                    title: "{{ __('messages.job.new_job') }}?",
+                                    text: "Do you want to create a new job post?",
+                                    icon: 'success',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Yes',
+                                    cancelButtonText: 'No',
+                                    customClass: {
+                                        confirmButton: 'btn btn-primary mr-3',
+                                        cancelButton: 'btn btn-secondary'
+                                    }
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location.href = "{{ route('job.create') }}";
+                                    }
+                                });
+                            } else if (typeof swal !== 'undefined') {
+                                swal({
+                                    title: "{{ __('messages.job.new_job') }}?",
+                                    text: "Do you want to create a new job post?",
+                                    icon: "success",
+                                    buttons: {
+                                        cancel: "No",
+                                        confirm: "Yes"
+                                    },
+                                }).then((willCreate) => {
+                                    if (willCreate) {
+                                        window.location.href = "{{ route('job.create') }}";
+                                    }
+                                });
+                            } else {
+                                if (confirm("Do you want to create a new job post?")) {
+                                    window.location.href = "{{ route('job.create') }}";
+                                }
+                            }
+                    }, 500);
+                });
+            </script>
+        @endpush
+    @endif
 @endsection

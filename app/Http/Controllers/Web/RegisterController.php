@@ -46,11 +46,14 @@ class RegisterController extends AppBaseController
     public function register(WebRegisterRequest $request): JsonResponse
     {
         $input = $request->all();
-        $this->webRegisterRepository->store($input);
+        $user = $this->webRegisterRepository->store($input);
+
+        \Illuminate\Support\Facades\Auth::login($user);
+
         $userType = ($input['type'] == 1) ? __('messages.notification_settings.candidate') : __('messages.company.employer');
         $redirectUrl = ($input['type'] == 1)
-            ? route('front.candidate.login')
-            : route('front.employee.login');
+            ? route('dashboard')
+            : route('employer.dashboard');
         Flash::success(__('messages.flash.registration_done'));
 
         return $this->sendResponse([

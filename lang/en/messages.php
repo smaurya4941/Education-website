@@ -613,7 +613,7 @@ return [
     'job_experience' => [
         'new_job_experience' => 'New Job Experience',
         'edit_job_experience' => 'Edit Job Experience',
-        'job_experience' => 'Job Experience',
+        'job_experience' => 'Job Experience (in years)',
         'language' => 'Language',
         'is_active' => 'Is Active',
         'is_default' => 'Is Default',
@@ -624,7 +624,7 @@ return [
         'show_required_degree_level' => 'Degree Level',
         'name' => 'Name',
         'no_degree_level_found' => 'No Degree Level Found',
-        'no_degree_level_available' => 'No Degree Level Available',
+        'no_degree_level_available' => 'No Degree Level Available',002
     ],
     'resumes' => [
         'file' => 'File',

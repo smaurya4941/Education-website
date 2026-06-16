@@ -11,6 +11,12 @@
             <h1 class="text-[32px] font-extrabold text-[#1b1c1c] tracking-tight font-['Plus_Jakarta_Sans'] leading-tight">{{ __('messages.employer_dashboard.dashboard') }}</h1>
             <p class="text-[15px] text-[#807287] mt-1.5 font-['Plus_Jakarta_Sans']">Welcome back! Manage your jobs, track applications, and hire top talent.</p>
         </div>
+        <div>
+            <a href="{{ route('job.create') }}" class="inline-flex items-center gap-2 px-6 py-3 bg-[#a100ff] text-white rounded-xl font-bold hover:bg-[#8600d4] transition-all shadow-[0_4px_12px_rgba(161,0,255,0.24)]">
+                <span class="material-symbols-outlined text-[20px]">add</span>
+                {{ __('messages.job.new_job') }}
+            </a>
+        </div>
     </div>
 
     <livewire:employer-dashboard lazy/>
