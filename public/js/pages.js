@@ -11674,6 +11674,21 @@ listenClick("#jobsSaveBtn, #saveDraft", function (e) {
     $("#saveAsDraft").attr("value", "1");
   }
 
+  var isRequiredValid = true;
+  var firstInvalid = null;
+  $("#createJobForm").find(':input[required]').each(function () {
+    if (!$(this).val() || $(this).val().length === 0) {
+      isRequiredValid = false;
+      if (!firstInvalid) firstInvalid = $(this);
+    }
+  });
+
+  if (!isRequiredValid) {
+    displayErrorMessage('Please fill out all required fields.');
+    if (firstInvalid) firstInvalid.focus();
+    return false;
+  }
+
   processingBtn("#createJobForm", $(this), "loading");
   var editor_content1 = details.root.innerHTML;
   var input = JSON.stringify(editor_content1);
