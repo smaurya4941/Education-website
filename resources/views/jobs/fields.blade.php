@@ -192,13 +192,7 @@
                    id="salary">
         </label>
     </div>
-    <div class="col-xl-6 col-md-6 col-sm-12 mb-5 d-flex flex-column">
-        <label class="form-label ">{{ __('messages.job.is_freelance').':' }}</label>
-        <label class="form-check form-switch form-switch-sm">
-            <input type="checkbox" name="is_freelance" class="form-check-input {{ checkLanguageSession() == 'ar' ? 'float-end' : 'float-start' }}"
-                   id="freelance">
-        </label>
-    </div>
+
 
     <!-- Submit Field -->
     <div class="d-flex justify-content-end">

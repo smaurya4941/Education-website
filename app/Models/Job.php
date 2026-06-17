@@ -125,7 +125,7 @@ use Illuminate\Support\Carbon;
 class Job extends Model
 {
     const NO_PREFERENCE = [
-        2 => 'Both',
+        2 => 'Both / No Preference',
         1 => 'Male',
         0 => 'Female',
     ];
@@ -227,7 +227,7 @@ class Job extends Model
         'salary_period_id' => 'required',
         'job_type_id' => 'required',
         'functional_area_id' => 'required',
-        'position' => 'min:0|max:255',
+        'position' => 'required|min:0|max:255',
         'experience' => 'required|min:0|max:255',
         'country_id' => 'nullable',
         'job_category_id' => 'required',

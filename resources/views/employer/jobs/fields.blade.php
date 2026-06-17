@@ -109,14 +109,7 @@
     <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
         {{ Form::label('position', __('messages.job.position').':', ['class' => 'form-label']) }}
         <span class="required"></span>
-    
-        {{ Form::text('position', null, [
-            'id' => 'positionId',
-            'class' => 'form-control',
-            'placeholder' => __('messages.job.position'),
-            'required',
-            'maxlength' => 255
-        ]) }}
+        {{ Form::text('position',  null, ['id'=>'positionId','class' => 'form-control','placeholder' => __('messages.company.select_position'),'required', 'min' => 0, 'max' => 255, 'onkeyup' => 'if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,"")']) }}
     </div>
     <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
         {{ Form::label('experience', __('messages.job_experience.job_experience').':', ['class' => 'form-label']) }}
@@ -131,14 +124,7 @@
                    id="salary">
         </label>
     </div>
-    <div class="col-xl-3 col-md-3 col-sm-12 mb-5">
-        <label class="form-label">{{ __('messages.job.is_freelance').':' }}</label><br>
-        <label class="form-check form-switch form-switch-sm {{ checkLanguageSession() == 'ar' ? 'float-end' : 'float-start' }}">
-            <input type="checkbox" name="is_freelance" class="form-check-input"
-                   value="1"
-                   id="freelance">
-        </label>
-    </div>
+
     <!-- Submit Field -->
     <div class="d-flex justify-content-end mt-5">
         <input name="saveAsDraft" type="hidden" value="" id="saveAsDraft">
