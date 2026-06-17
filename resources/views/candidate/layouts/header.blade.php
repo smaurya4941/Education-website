@@ -17,11 +17,11 @@
             @include('candidate.layouts.sidebar')
         </nav>
         <ul class="nav align-items-stretch flex-nowrap">
-            <li class="px-xxl-3 px-2 d-flex align-items-stretch">
+            {{-- <li class="px-xxl-3 px-2 d-flex align-items-stretch">
                 <a href="{{ route('theme.mode') }}" class="d-flex align-items-center" >
                     <i class="fas user-check-icon {{ getLoggedInUser()->theme_mode ? 'fa-sun' : 'fa-moon' }} fs-2"></i>
                 </a>
-            </li>
+            </li> --}}
             <li class="px-xxl-3 px-2 d-flex align-items-stretch">
                 <div class="dropdown custom-dropdown d-flex align-items-center py-4">
                     <button class="btn dropdown-toggle hide-arrow {{ checkLanguageSession() == 'ar' ? 'pe-2 ps-0' : 'ps-2 pe-0' }} py-0 position-relative" type="button" id="dropdownMenuButton1"

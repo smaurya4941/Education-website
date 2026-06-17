@@ -6,26 +6,119 @@
         .teacher-profile-wrap{max-width:920px;margin:0 auto}
         .teacher-progress{display:flex;align-items:flex-start;margin-bottom:2rem}
         .teacher-step-node{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:92px}
-        .teacher-step-circle{width:34px;height:34px;border-radius:50%;border:1px solid #d8dde6;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;color:#7e8299}
-        .teacher-step-circle.active{background:#185fa5;border-color:#185fa5;color:#fff}
-        .teacher-step-circle.done{background:#1d9e75;border-color:#1d9e75;color:#fff}
-        .teacher-step-label{font-size:12px;color:#7e8299;text-align:center}
-        .teacher-step-label.active{color:#185fa5;font-weight:600}
-        .teacher-step-label.done{color:#1d9e75;font-weight:600}
-        .teacher-step-line{height:1px;background:#d8dde6;flex:1;margin-top:17px}
-        .teacher-step-line.done{background:#1d9e75}
+        .teacher-step-circle{width:34px;height:34px;border-radius:50%;border:1px solid #ede8f5;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;color:#807287;transition:all 0.3s;}
+        .teacher-step-circle.active{background:#a100ff;border-color:#a100ff;color:#fff;box-shadow:0 4px 12px rgba(161,0,255,0.2)}
+        .teacher-step-circle.done{background:#10b981;border-color:#10b981;color:#fff}
+        .teacher-step-label{font-size:12px;color:#807287;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;}
+        .teacher-step-label.active{color:#a100ff;font-weight:700}
+        .teacher-step-label.done{color:#10b981;font-weight:700}
+        .teacher-step-line{height:2px;background:#ede8f5;flex:1;margin-top:16px;transition:all 0.3s;}
+        .teacher-step-line.done{background:#10b981}
         .teacher-form-section{display:none}
-        .teacher-form-section.visible{display:block}
-        .teacher-section-title{font-size:1.25rem;font-weight:600;margin-bottom:.25rem}
-        .teacher-section-sub{color:#7e8299;margin-bottom:1.5rem}
+        .teacher-form-section.visible{display:block;animation:fadeIn 0.3s ease-in;}
+        .teacher-section-title{font-size:1.5rem;font-weight:800;color:#1b1c1c;margin-bottom:.25rem;font-family:'Plus Jakarta Sans',sans-serif;}
+        .teacher-section-sub{color:#807287;margin-bottom:1.5rem;font-size:0.95rem;font-family:'Plus Jakarta Sans',sans-serif;}
         .teacher-check-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
         .teacher-chip-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.5rem}
         .teacher-chip input{display:none}
-        .teacher-chip span{display:block;text-align:center;border:1px solid #d8dde6;border-radius:.475rem;padding:.65rem .25rem;cursor:pointer;color:#5e6278}
-        .teacher-chip input:checked+span{background:#e6f1fb;border-color:#85b7eb;color:#0c447c;font-weight:600}
+        .teacher-chip span{display:block;text-align:center;border:1px solid #ede8f5;border-radius:.75rem;padding:.65rem .25rem;cursor:pointer;color:#4e4256;transition:all 0.2s;background:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;}
+        .teacher-chip input:checked+span{background:#faf7ff;border-color:#e1b6ff;color:#a100ff;font-weight:700;box-shadow:0 2px 8px rgba(161,0,255,0.08)}
         .teacher-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
-        .teacher-tag{background:#e6f1fb;border:1px solid #b5d4f4;border-radius:20px;padding:.25rem .65rem;color:#0c447c;display:inline-flex;gap:.5rem;align-items:center}
-        .teacher-tag button{border:0;background:transparent;color:#185fa5;line-height:1}
+        .teacher-tag{background:#faf7ff;border:1px solid #e1b6ff;border-radius:20px;padding:.35rem .85rem;color:#a100ff;display:inline-flex;gap:.5rem;align-items:center;font-weight:600;font-size:0.9rem;font-family:'Plus Jakarta Sans',sans-serif;}
+        .teacher-tag button{border:0;background:transparent;color:#a100ff;line-height:1;font-size:1.1rem;}
+        
+        .form-control, .form-select {
+            display: block;
+            width: 100%;
+            padding: 0.8rem 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #1b1c1c;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1.5px solid #ede8f5;
+            appearance: none;
+            border-radius: 12px;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            box-shadow: 0 1px 2px rgba(161,0,255,0.02);
+        }
+        .form-control:focus, .form-select:focus {
+            color: #1b1c1c;
+            background-color: #fff;
+            border-color: #a100ff;
+            outline: 0;
+            box-shadow: 0 0 0 4px rgba(161,0,255,0.1);
+        }
+        .form-control::placeholder {
+            color: #a097a8;
+            opacity: 1;
+        }
+        .form-label {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #4e4256;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .required::after {
+            content: "*";
+            color: #ef4444;
+            margin-left: 4px;
+        }
+        .btn-primary {
+            color: #fff !important;
+            background-color: #a100ff !important;
+            border-color: #a100ff !important;
+            border-radius: 12px !important;
+            padding: 0.75rem 2rem !important;
+            font-weight: 700 !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            transition: all 0.2s !important;
+            box-shadow: 0 4px 12px rgba(161,0,255,0.2) !important;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-primary:hover {
+            background-color: #8e00e2 !important;
+            border-color: #8e00e2 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(161,0,255,0.25) !important;
+        }
+        .btn-light {
+            color: #4e4256 !important;
+            background-color: #faf7ff !important;
+            border-color: #ede8f5 !important;
+            border-radius: 12px !important;
+            padding: 0.75rem 2rem !important;
+            font-weight: 700 !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            transition: all 0.2s !important;
+        }
+        .btn-light:hover {
+            background-color: #ede8f5 !important;
+        }
+        .btn-success {
+            color: #fff !important;
+            background-color: #10b981 !important;
+            border-color: #10b981 !important;
+            border-radius: 12px !important;
+            padding: 0.75rem 2rem !important;
+            font-weight: 700 !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            transition: all 0.2s !important;
+            box-shadow: 0 4px 12px rgba(16,185,129,0.2) !important;
+        }
+        .btn-success:hover {
+            background-color: #059669 !important;
+            border-color: #059669 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(16,185,129,0.25) !important;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 575.98px){
             .teacher-progress{overflow-x:auto;padding-bottom:.5rem}
             .teacher-check-grid{grid-template-columns:1fr}
@@ -50,8 +143,8 @@
         $dobValue = old('dob', ! empty($user->dob) ? \Carbon\Carbon::parse($user->dob)->format('Y-m-d') : null);
     @endphp
     <div class="teacher-profile-wrap">
-        <div class="card">
-            <div class="card-body p-lg-10">
+        <div class="bg-white border border-[#ede8f5] rounded-[24px] shadow-[0_4px_20px_rgba(161,0,255,0.06)] mb-8">
+            <div class="p-6 lg:p-10">
                 {{ Form::model($user, ['route' => 'candidate-profile.update', 'files' => true, 'id' => 'candidateProfileUpdate', 'method' => 'put', 'novalidate' => true]) }}
                 {{ Form::hidden('isEdit', true, ['id' => 'isEdit']) }}
                 {{ Form::hidden('immediate_available', 1) }}

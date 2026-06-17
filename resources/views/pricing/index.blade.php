@@ -26,6 +26,12 @@
         </div>
 
         <div class="w-full relative z-10 mx-auto px-[16px] max-w-[1240px]">
+            <div class="mb-4">
+                <a href="{{ route('employer.dashboard') }}" class="inline-flex items-center justify-center px-6 py-3 border border-[#d1c1d8] text-[15px] font-bold rounded-xl text-[#4e4256] bg-white hover:border-[#a100ff] hover:text-[#a100ff] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 font-['Plus_Jakarta_Sans']">
+                    {{ __('messages.common.back') }}
+                </a>
+            </div>
+            
             <div class="text-center max-w-2xl mx-auto mb-[32px]">
                 <span class="block text-[12px] font-bold uppercase tracking-[0.2em] text-[#a100ff] mb-[12px]">Manage Subscription</span>
                 <h1 class="text-4xl md:text-[36px] font-extrabold text-[#1b1c1c] tracking-tight mb-[12px] leading-[1.15] m-0">

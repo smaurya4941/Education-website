@@ -679,7 +679,7 @@ return [
         'no_salary_currency_available' => 'No Salary Currency Available',
     ],
     'job' => [
-        'new_job' => 'New Job',
+        'new_job' => 'Create New Job',
         'edit_job' => 'Edit Job',
         'job_details' => 'Job Details',
         'job_title' => 'Job Title',

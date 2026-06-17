@@ -3,66 +3,73 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.css') }}">
 @endpush
 @section('section')
+<div class="bg-white border border-[#ede8f5] rounded-[24px] shadow-[0_4px_20px_rgba(161,0,255,0.06)] p-6 lg:p-8 mb-8">
     <div class="mb-xl-8">
         <div class="border-0">
-            <div class="d-md-flex align-items-center justify-content-between mb-5 mx-3">
-                <h1 class="mb-0">{{ __('messages.candidate_profile.experience') }}</h1>
+            <div class="d-md-flex align-items-center justify-content-between mb-5">
+                <h1 class="text-2xl font-extrabold text-[#1b1c1c] tracking-tight font-['Plus_Jakarta_Sans']">{{ __('messages.candidate_profile.experience') }}</h1>
                 <div class="text-end mt-4 mt-md-0">
-                    <a class="btn btn-primary form-btn addExperienceModal" data-bs-toggle="modal"
+                    <a class="inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-[14px] font-bold rounded-xl text-white bg-[#a100ff] hover:bg-[#8e00e2] shadow-[0_4px_12px_rgba(161,0,255,0.2)] transition-all duration-300 font-['Plus_Jakarta_Sans'] cursor-pointer addExperienceModal" data-bs-toggle="modal"
                         data-bs-target="#addExperienceModal">{{ __('messages.candidate_profile.add_experience') }} </a>
                 </div>
             </div>
 
-            <div class="pt-0 fs-6 py-8 px-3 text-gray-700">
+            <div class="pt-0 py-4 text-gray-700">
                 {{ Form::hidden(null, __('messages.candidate_profile.present'), ['id' => 'candidatePresentMsg']) }}
                 <div class="row">
-                    <div class="candidate-experience-container">
+                    <div class="candidate-experience-container w-full grid grid-cols-1 gap-6">
                         <div class="col-12 {{ $data['candidateExperiences']->count() ? 'd-none' : '' }}"
                             id="notfoundExperience">
-                            <h5 class="product-item pb-5 d-flex justify-content-center text-gray-600">
-                                {{ __('messages.candidate.experience_not_found') }}
-                            </h5>
+                            <div class="bg-[#faf7ff] border border-[#e1b6ff] rounded-[16px] p-8 text-center">
+                                <h5 class="text-[#807287] font-medium font-['Plus_Jakarta_Sans']">
+                                    {{ __('messages.candidate.experience_not_found') }}
+                                </h5>
+                            </div>
                         </div>
                         @php
                             /** @var \App\Models\CandidateExperience $candidateExperience */
                         @endphp
                         @foreach ($data['candidateExperiences'] as $candidateExperience)
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 candidate-experience rounded shadow p-5 mb-5 card"
+                            <div class="col-12 candidate-experience bg-white border border-[#ede8f5] rounded-[16px] shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-6 transition-all duration-300 hover:shadow-[0_8px_24px_rgba(161,0,255,0.08)] hover:border-[#e1b6ff] relative group"
                                 data-experience-id="{{ $loop->index }}" data-id="{{ $candidateExperience->id }}">
-                                <article class="article article-style-b">
+                                <article class="article article-style-b w-full">
                                     <div class="article-details">
-                                        <div class="d-flex justify-content-between">
+                                        <div class="d-flex justify-content-between align-items-start mb-3">
                                             <div class="article-title">
-                                                <h4 class="text-primary">{{ $candidateExperience->experience_title }}</h4>
-                                                <h6 class="text-muted">{{ $candidateExperience->company }}</h6>
+                                                <h4 class="text-[18px] font-bold text-[#1b1c1c] font-['Plus_Jakarta_Sans'] mb-1">{{ $candidateExperience->experience_title }}</h4>
+                                                <h6 class="text-[15px] font-semibold text-[#a100ff] font-['Plus_Jakarta_Sans']">{{ $candidateExperience->company }}</h6>
                                             </div>
-                                            <div class="article-cta candidate-experience-edit-delete">
+                                            <div class="article-cta candidate-experience-edit-delete flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                                                 <a href="javascript:void(0)"
-                                                    class="edit-candidate-experience btn px-2 text-primary fs-3 {{ checkLanguageSession() == 'ar' ? 'pe-0' : 'ps-0' }}"
+                                                    class="edit-candidate-experience w-8 h-8 rounded-lg bg-[#faf7ff] text-[#a100ff] hover:bg-[#a100ff] hover:text-white flex items-center justify-center transition-all duration-200"
                                                     title="{{ __('messages.common.edit') }}" data-bs-toggle="tooltip"
-                                                    data-id="{{ $candidateExperience->id }}"><i
-                                                        class="fa-solid fa-pen-to-square"></i></a>
+                                                    data-id="{{ $candidateExperience->id }}"><span class="material-symbols-outlined text-[18px]">edit</span></a>
                                                 <a href="javascript:void(0)"
-                                                    class="delete-experience btn px-2 text-danger fs-3 {{ checkLanguageSession() == 'ar' ? 'ps-0' : 'pe-0' }}"
+                                                    class="delete-experience w-8 h-8 rounded-lg bg-red-50 text-red-500 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all duration-200"
                                                     title="{{ __('messages.common.delete') }}" data-bs-toggle="tooltip"
-                                                    data-id="{{ $candidateExperience->id }}"><i
-                                                        class="fa-solid fa-trash"></i></a>
+                                                    data-id="{{ $candidateExperience->id }}"><span class="material-symbols-outlined text-[18px]">delete</span></a>
                                             </div>
                                         </div>
-                                        <span
-                                            class="text-muted">{{ \Carbon\Carbon::parse($candidateExperience->start_date)->translatedFormat('jS M, Y') }}
-                                            - </span>
-
-                                        @if ($candidateExperience->currently_working)
-                                            <span class="text-muted">{{ __('messages.candidate_profile.present') }}</span>
-                                        @else
-                                            <span class="text-muted">
-                                                {{ \Carbon\Carbon::parse($candidateExperience->end_date)->translatedFormat('jS M, Y') }}
-                                            </span>
-                                        @endif
-                                        <span class="text-muted"> | {{ $candidateExperience->country }}</span>
+                                        
+                                        <div class="flex flex-wrap items-center gap-3 text-[14px] text-[#807287] font-medium mb-3">
+                                            <div class="flex items-center gap-1.5 bg-gray-50 px-3 py-1 rounded-full">
+                                                <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                                                <span>{{ \Carbon\Carbon::parse($candidateExperience->start_date)->translatedFormat('jS M, Y') }} - 
+                                                @if ($candidateExperience->currently_working)
+                                                    {{ __('messages.candidate_profile.present') }}
+                                                @else
+                                                    {{ \Carbon\Carbon::parse($candidateExperience->end_date)->translatedFormat('jS M, Y') }}
+                                                @endif
+                                                </span>
+                                            </div>
+                                            <div class="flex items-center gap-1.5 bg-gray-50 px-3 py-1 rounded-full">
+                                                <span class="material-symbols-outlined text-[16px]">public</span>
+                                                <span>{{ $candidateExperience->country }}</span>
+                                            </div>
+                                        </div>
+                                        
                                         @if (!empty($candidateExperience->description))
-                                            <p class="mb-0 pb-md-0 pb-4">
+                                            <p class="text-[14px] text-[#4e4256] leading-relaxed mb-0">
                                                 {{ Str::limit($candidateExperience->description, 225, '...') }}</p>
                                         @endif
                                     </div>
@@ -74,54 +81,65 @@
             </div>
         </div>
 
-        <div class="border-0 pt-6">
-            <div class="d-md-flex align-items-center justify-content-between mb-5 mx-3">
-                <h1 class="mb-0">{{ __('messages.candidate_profile.education') }}</h1>
+        <div class="border-t border-[#ede8f5] pt-8 mt-4">
+            <div class="d-md-flex align-items-center justify-content-between mb-5">
+                <h1 class="text-2xl font-extrabold text-[#1b1c1c] tracking-tight font-['Plus_Jakarta_Sans']">{{ __('messages.candidate_profile.education') }}</h1>
                 <div class="text-end mt-4 mt-md-0">
-                    <a class="btn btn-primary form-btn addEducationModal" data-bs-toggle="modal"
+                    <a class="inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-[14px] font-bold rounded-xl text-white bg-[#a100ff] hover:bg-[#8e00e2] shadow-[0_4px_12px_rgba(161,0,255,0.2)] transition-all duration-300 font-['Plus_Jakarta_Sans'] cursor-pointer addEducationModal" data-bs-toggle="modal"
                         data-bs-target="#addEducationModal">{{ __('messages.candidate_profile.add_education') }}
                     </a>
                 </div>
             </div>
-            <div class="pt-0 fs-6 py-8 px-3 text-gray-700">
+            
+            <div class="pt-0 py-4 text-gray-700">
                 <div class="row">
-                    <div class="candidate-education-container">
+                    <div class="candidate-education-container w-full grid grid-cols-1 gap-6">
                         <div class="col-12 {{ $data['candidateEducations']->count() ? 'd-none' : '' }}"
                             id="notfoundEducation">
-                            <h5 class="product-item pb-5 d-flex justify-content-center text-gray-600">
-                                {{ __('messages.candidate.education_not_found') }}
-                            </h5>
+                            <div class="bg-[#faf7ff] border border-[#e1b6ff] rounded-[16px] p-8 text-center">
+                                <h5 class="text-[#807287] font-medium font-['Plus_Jakarta_Sans']">
+                                    {{ __('messages.candidate.education_not_found') }}
+                                </h5>
+                            </div>
                         </div>
                         @php
                             /** @var \App\Models\CandidateEducation $candidateEducation */
                         @endphp
                         @foreach ($data['candidateEducations'] as $candidateEducation)
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 candidate-education shadow rounded p-5 mb-5 card"
+                            <div class="col-12 candidate-education bg-white border border-[#ede8f5] rounded-[16px] shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-6 transition-all duration-300 hover:shadow-[0_8px_24px_rgba(161,0,255,0.08)] hover:border-[#e1b6ff] relative group"
                                 data-education-id="{{ $loop->index }}" data-id="{{ $candidateEducation->id }}">
-                                <article class="article article-style-b">
+                                <article class="article article-style-b w-full">
                                     <div class="article-details">
-                                        <div class="d-flex justify-content-between">
+                                        <div class="d-flex justify-content-between align-items-start mb-3">
                                             <div class="article-title">
-                                                <h4 class="text-primary education-degree-level">
+                                                <h4 class="text-[18px] font-bold text-[#1b1c1c] font-['Plus_Jakarta_Sans'] mb-1 education-degree-level">
                                                     {{ $candidateEducation->degreeLevel->name }}</h4>
-                                                <h6 class="text-muted">{{ $candidateEducation->degree_title }}</h6>
+                                                <h6 class="text-[15px] font-semibold text-[#a100ff] font-['Plus_Jakarta_Sans']">{{ $candidateEducation->degree_title }}</h6>
                                             </div>
-                                            <div class="article-cta candidate-education-edit-delete">
+                                            <div class="article-cta candidate-education-edit-delete flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                                                 <a href="javascript:void(0)"
-                                                    class="btn px-2 text-primary fs-3 {{ checkLanguageSession() == 'ar' ? 'pe-0' : 'ps-0' }} edit-candidate-education"
+                                                    class="w-8 h-8 rounded-lg bg-[#faf7ff] text-[#a100ff] hover:bg-[#a100ff] hover:text-white flex items-center justify-center transition-all duration-200 edit-candidate-education"
                                                     title="{{ __('messages.common.edit') }}" data-bs-toggle="tooltip"
-                                                    data-id="{{ $candidateEducation->id }}"><i
-                                                        class="fa-solid fa-pen-to-square"></i></a>
+                                                    data-id="{{ $candidateEducation->id }}"><span class="material-symbols-outlined text-[18px]">edit</span></a>
                                                 <a href="javascript:void(0)"
-                                                    class="delete-education btn px-2 text-danger fs-3 {{ checkLanguageSession() == 'ar' ? 'ps-0' : 'pe-0' }}"
+                                                    class="delete-education w-8 h-8 rounded-lg bg-red-50 text-red-500 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all duration-200"
                                                     title="{{ __('messages.common.delete') }}" data-bs-toggle="tooltip"
-                                                    data-id="{{ $candidateEducation->id }}"><i
-                                                        class="fa-solid fa-trash"></i></a>
+                                                    data-id="{{ $candidateEducation->id }}"><span class="material-symbols-outlined text-[18px]">delete</span></a>
                                             </div>
                                         </div>
-                                        <span class="text-muted">{{ $candidateEducation->year }} |
-                                            {{ $candidateEducation->country }}</span>
-                                        <p class="mb-0 pb-md-0 pb-4">{{ $candidateEducation->institute }}</p>
+                                        
+                                        <div class="flex flex-wrap items-center gap-3 text-[14px] text-[#807287] font-medium mb-3">
+                                            <div class="flex items-center gap-1.5 bg-gray-50 px-3 py-1 rounded-full">
+                                                <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                                                <span>{{ $candidateEducation->year }}</span>
+                                            </div>
+                                            <div class="flex items-center gap-1.5 bg-gray-50 px-3 py-1 rounded-full">
+                                                <span class="material-symbols-outlined text-[16px]">public</span>
+                                                <span>{{ $candidateEducation->country }}</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <p class="text-[14px] text-[#4e4256] leading-relaxed mb-0">{{ $candidateEducation->institute }}</p>
                                     </div>
                                 </article>
                             </div>
@@ -132,6 +150,7 @@
 
         </div>
     </div>
+</div>
 
     {{--                                @if($candidateExperience->currently_working)--}}
     {{--                                    <span class="text-muted">{{ __('messages.candidate_profile.present') }}</span>--}}
