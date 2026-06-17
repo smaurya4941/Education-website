@@ -114,6 +114,120 @@
         body {
             font-family: var(--bw-font);
         }
+        
+        .form-control, .form-select, .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--multiple {
+            display: block !important;
+            width: 100% !important;
+            padding: 0.8rem 1.25rem !important;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            line-height: 1.5 !important;
+            color: #1b1c1c !important;
+            background-color: #fff !important;
+            background-clip: padding-box !important;
+            border: 1.5px solid #ede8f5 !important;
+            appearance: none !important;
+            border-radius: 12px !important;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            box-shadow: 0 1px 2px rgba(161,0,255,0.02) !important;
+            height: auto !important;
+        }
+        .form-select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23807287' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e") !important;
+            background-repeat: no-repeat !important;
+            background-position: right 1.25rem center !important;
+            background-size: 16px 12px !important;
+            padding-right: 2.5rem !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #1b1c1c !important;
+            line-height: 1.5 !important;
+            padding: 0 !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 100% !important;
+            right: 1.25rem !important;
+        }
+        .form-control:focus, .form-select:focus, .select2-container--open .select2-selection {
+            color: #1b1c1c !important;
+            background-color: #fff !important;
+            border-color: #a100ff !important;
+            outline: 0 !important;
+            box-shadow: 0 0 0 4px rgba(161,0,255,0.1) !important;
+        }
+        .form-control::placeholder {
+            color: #a097a8 !important;
+            opacity: 1 !important;
+        }
+        .form-label {
+            margin-bottom: 0.5rem !important;
+            font-size: 0.9rem !important;
+            font-weight: 700 !important;
+            color: #4e4256 !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+        }
+        .required::after {
+            content: "*" !important;
+            color: #ef4444 !important;
+            margin-left: 4px !important;
+        }
+        .btn-primary {
+            color: #fff !important;
+            background-color: #a100ff !important;
+            border-color: #a100ff !important;
+            border-radius: 12px !important;
+            padding: 0.75rem 2rem !important;
+            font-weight: 700 !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            transition: all 0.2s !important;
+            box-shadow: 0 4px 12px rgba(161,0,255,0.2) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        .btn-primary:hover {
+            background-color: #8e00e2 !important;
+            border-color: #8e00e2 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 16px rgba(161,0,255,0.25) !important;
+        }
+        .btn-light, .btn-secondary {
+            color: #4e4256 !important;
+            background-color: #faf7ff !important;
+            border-color: #ede8f5 !important;
+            border-radius: 12px !important;
+            padding: 0.75rem 2rem !important;
+            font-weight: 700 !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            transition: all 0.2s !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        .btn-light:hover, .btn-secondary:hover {
+            background-color: #ede8f5 !important;
+        }
+        .btn-success {
+            color: #fff !important;
+            background-color: #10b981 !important;
+            border-color: #10b981 !important;
+            border-radius: 12px !important;
+            padding: 0.75rem 2rem !important;
+            font-weight: 700 !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            transition: all 0.2s !important;
+            box-shadow: 0 4px 12px rgba(16,185,129,0.2) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        .btn-success:hover {
+            background-color: #059669 !important;
+            border-color: #059669 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 16px rgba(16,185,129,0.25) !important;
+        }
     </style>
     @stack('css')
     @livewireStyles

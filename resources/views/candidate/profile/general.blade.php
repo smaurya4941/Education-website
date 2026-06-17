@@ -4,12 +4,12 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.css') }}">
     <style>
         .teacher-profile-wrap{max-width:920px;margin:0 auto}
-        .teacher-progress{display:flex;align-items:flex-start;margin-bottom:2rem}
+        .teacher-progress{display:flex;align-items:flex-start;justify-content:space-between;width:100%;margin-bottom:2rem}
         .teacher-step-node{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:92px}
         .teacher-step-circle{width:34px;height:34px;border-radius:50%;border:1px solid #ede8f5;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;color:#807287;transition:all 0.3s;}
         .teacher-step-circle.active{background:#a100ff;border-color:#a100ff;color:#fff;box-shadow:0 4px 12px rgba(161,0,255,0.2)}
         .teacher-step-circle.done{background:#10b981;border-color:#10b981;color:#fff}
-        .teacher-step-label{font-size:12px;color:#807287;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;}
+        .teacher-step-label{font-size:12px;color:#807287;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap;}
         .teacher-step-label.active{color:#a100ff;font-weight:700}
         .teacher-step-label.done{color:#10b981;font-weight:700}
         .teacher-step-line{height:2px;background:#ede8f5;flex:1;margin-top:16px;transition:all 0.3s;}
@@ -27,97 +27,6 @@
         .teacher-tag{background:#faf7ff;border:1px solid #e1b6ff;border-radius:20px;padding:.35rem .85rem;color:#a100ff;display:inline-flex;gap:.5rem;align-items:center;font-weight:600;font-size:0.9rem;font-family:'Plus Jakarta Sans',sans-serif;}
         .teacher-tag button{border:0;background:transparent;color:#a100ff;line-height:1;font-size:1.1rem;}
         
-        .form-control, .form-select {
-            display: block;
-            width: 100%;
-            padding: 0.8rem 1.25rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            line-height: 1.5;
-            color: #1b1c1c;
-            background-color: #fff;
-            background-clip: padding-box;
-            border: 1.5px solid #ede8f5;
-            appearance: none;
-            border-radius: 12px;
-            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            box-shadow: 0 1px 2px rgba(161,0,255,0.02);
-        }
-        .form-control:focus, .form-select:focus {
-            color: #1b1c1c;
-            background-color: #fff;
-            border-color: #a100ff;
-            outline: 0;
-            box-shadow: 0 0 0 4px rgba(161,0,255,0.1);
-        }
-        .form-control::placeholder {
-            color: #a097a8;
-            opacity: 1;
-        }
-        .form-label {
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #4e4256;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        .required::after {
-            content: "*";
-            color: #ef4444;
-            margin-left: 4px;
-        }
-        .btn-primary {
-            color: #fff !important;
-            background-color: #a100ff !important;
-            border-color: #a100ff !important;
-            border-radius: 12px !important;
-            padding: 0.75rem 2rem !important;
-            font-weight: 700 !important;
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
-            transition: all 0.2s !important;
-            box-shadow: 0 4px 12px rgba(161,0,255,0.2) !important;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .btn-primary:hover {
-            background-color: #8e00e2 !important;
-            border-color: #8e00e2 !important;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(161,0,255,0.25) !important;
-        }
-        .btn-light {
-            color: #4e4256 !important;
-            background-color: #faf7ff !important;
-            border-color: #ede8f5 !important;
-            border-radius: 12px !important;
-            padding: 0.75rem 2rem !important;
-            font-weight: 700 !important;
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
-            transition: all 0.2s !important;
-        }
-        .btn-light:hover {
-            background-color: #ede8f5 !important;
-        }
-        .btn-success {
-            color: #fff !important;
-            background-color: #10b981 !important;
-            border-color: #10b981 !important;
-            border-radius: 12px !important;
-            padding: 0.75rem 2rem !important;
-            font-weight: 700 !important;
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
-            transition: all 0.2s !important;
-            box-shadow: 0 4px 12px rgba(16,185,129,0.2) !important;
-        }
-        .btn-success:hover {
-            background-color: #059669 !important;
-            border-color: #059669 !important;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(16,185,129,0.25) !important;
-        }
-
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 575.98px){
             .teacher-progress{overflow-x:auto;padding-bottom:.5rem}

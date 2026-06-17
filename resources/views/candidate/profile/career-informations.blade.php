@@ -39,13 +39,13 @@
                                                 <h4 class="text-[18px] font-bold text-[#1b1c1c] font-['Plus_Jakarta_Sans'] mb-1">{{ $candidateExperience->experience_title }}</h4>
                                                 <h6 class="text-[15px] font-semibold text-[#a100ff] font-['Plus_Jakarta_Sans']">{{ $candidateExperience->company }}</h6>
                                             </div>
-                                            <div class="article-cta candidate-experience-edit-delete flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                            <div class="article-cta candidate-experience-edit-delete flex gap-2">
                                                 <a href="javascript:void(0)"
-                                                    class="edit-candidate-experience w-8 h-8 rounded-lg bg-[#faf7ff] text-[#a100ff] hover:bg-[#a100ff] hover:text-white flex items-center justify-center transition-all duration-200"
+                                                    class="edit-candidate-experience w-8 h-8 rounded-lg bg-[#faf7ff] text-[#a100ff] border border-[#ede8f5] hover:bg-[#a100ff] hover:text-white flex items-center justify-center transition-all duration-200"
                                                     title="{{ __('messages.common.edit') }}" data-bs-toggle="tooltip"
                                                     data-id="{{ $candidateExperience->id }}"><span class="material-symbols-outlined text-[18px]">edit</span></a>
                                                 <a href="javascript:void(0)"
-                                                    class="delete-experience w-8 h-8 rounded-lg bg-red-50 text-red-500 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all duration-200"
+                                                    class="delete-experience w-8 h-8 rounded-lg bg-red-50 text-red-500 border border-red-100 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all duration-200"
                                                     title="{{ __('messages.common.delete') }}" data-bs-toggle="tooltip"
                                                     data-id="{{ $candidateExperience->id }}"><span class="material-symbols-outlined text-[18px]">delete</span></a>
                                             </div>
@@ -116,13 +116,13 @@
                                                     {{ $candidateEducation->degreeLevel->name }}</h4>
                                                 <h6 class="text-[15px] font-semibold text-[#a100ff] font-['Plus_Jakarta_Sans']">{{ $candidateEducation->degree_title }}</h6>
                                             </div>
-                                            <div class="article-cta candidate-education-edit-delete flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                            <div class="article-cta candidate-education-edit-delete flex gap-2">
                                                 <a href="javascript:void(0)"
-                                                    class="w-8 h-8 rounded-lg bg-[#faf7ff] text-[#a100ff] hover:bg-[#a100ff] hover:text-white flex items-center justify-center transition-all duration-200 edit-candidate-education"
+                                                    class="w-8 h-8 rounded-lg bg-[#faf7ff] text-[#a100ff] border border-[#ede8f5] hover:bg-[#a100ff] hover:text-white flex items-center justify-center transition-all duration-200 edit-candidate-education"
                                                     title="{{ __('messages.common.edit') }}" data-bs-toggle="tooltip"
                                                     data-id="{{ $candidateEducation->id }}"><span class="material-symbols-outlined text-[18px]">edit</span></a>
                                                 <a href="javascript:void(0)"
-                                                    class="delete-education w-8 h-8 rounded-lg bg-red-50 text-red-500 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all duration-200"
+                                                    class="delete-education w-8 h-8 rounded-lg bg-red-50 text-red-500 border border-red-100 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all duration-200"
                                                     title="{{ __('messages.common.delete') }}" data-bs-toggle="tooltip"
                                                     data-id="{{ $candidateEducation->id }}"><span class="material-symbols-outlined text-[18px]">delete</span></a>
                                             </div>
