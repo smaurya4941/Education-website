@@ -1,0 +1,578 @@
+<form method="POST" action="http://127.0.0.1:8000/employer/jobs" accept-charset="UTF-8" id="createJobForm"
+    data-an-count="2" data-an-form-handler="damgg" data-select2-id="select2-data-createJobForm">
+    <input name="_token" type="hidden" value="jbblNe1pV9bplE9m7H9hf5YC937WeVfVjsUGd7O1">
+
+    <div class="row" data-select2-id="select2-data-526-0t34">
+        <!-- Job Title -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="job_title" class="form-label">Job Title:</label>
+            <span class="required">*</span>
+            <input class="form-control" required="" placeholder="Job Title" name="job_title" type="text" id="job_title">
+        </div>
+
+        <!-- Employment Type (renamed from Job Type) -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="job_type_id" class="form-label">Employment Type:</label>
+            <span class="required">*</span>
+            <select id="jobTypeId" class="form-select select2-hidden-accessible" data-control="select2" required=""
+                name="job_type_id" tabindex="-1" aria-hidden="true" data-select2-id="select2-data-jobTypeId">
+                <option selected="selected" value="" data-select2-id="select2-data-38-x7zc">Select Employment Type
+                </option>
+                <option value="1">Full-Time Permanent</option>
+                <option value="2">Full-Time Contract</option>
+                <option value="3">Part-Time</option>
+                <option value="4">Visiting / Guest Faculty</option>
+                <option value="5">Adjunct / Associate</option>
+                <option value="6">Internship / Fellowship</option>
+                <option value="7">Fixed-Term Contract (1-2 years)</option>
+            </select>
+        </div>
+
+        <!-- Education Level / Institution Type (renamed from Job Category) -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="job_category_id" class="form-label">Education Level / Institution Type:</label>
+            <span class="required">*</span>
+            <select id="jobCategoryId" class="form-select select2-hidden-accessible" data-control="select2" required=""
+                name="job_category_id" tabindex="-1" aria-hidden="true" data-select2-id="select2-data-jobCategoryId">
+                <option selected="selected" value="" data-select2-id="select2-data-47-0y7u">Select Education Level /
+                    Institution Type</option>
+                <option value="1">Pre-School / Nursery</option>
+                <option value="2">Primary School (Classes 1-5)</option>
+                <option value="3">Upper Primary (Classes 6-8)</option>
+                <option value="4">Secondary School (Classes 9-10)</option>
+                <option value="5">Senior Secondary (Classes 11-12)</option>
+                <option value="6">Diploma / Polytechnic Institute</option>
+                <option value="7">Undergraduate College</option>
+                <option value="8">Post-Graduate / Research University</option>
+                <option value="9">Professional Institute (Medical, Engineering, Law)</option>
+                <option value="10">Coaching / Tutorial Center</option>
+                <option value="11">Online Learning Platform</option>
+                <option value="12">EdTech Company</option>
+            </select>
+        </div>
+
+        <!-- Subject / Department (renamed from Functional Area) -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="functional_area_id" class="form-label">Subject / Department:</label>
+            <span class="required">*</span>
+            <select id="functionalAreaId" class="form-select select2-hidden-accessible" data-control="select2"
+                required="" name="functional_area_id" tabindex="-1" aria-hidden="true"
+                data-select2-id="select2-data-functionalAreaId">
+                <option selected="selected" value="" data-select2-id="select2-data-363-odv1">Select Subject / Department
+                </option>
+                <option value="1">Mathematics</option>
+                <option value="2">Science (Physics, Chemistry, Biology)</option>
+                <option value="3">English Language & Literature</option>
+                <option value="4">Social Sciences (History, Geography, Civics)</option>
+                <option value="5">Languages (Hindi, Regional Languages, Foreign Languages)</option>
+                <option value="6">Computer Science / IT</option>
+                <option value="7">Commerce (Accounting, Economics, Business Studies)</option>
+                <option value="8">Arts (Philosophy, Psychology, Sociology)</option>
+                <option value="9">Physical Education & Sports</option>
+                <option value="10">Fine Arts (Painting, Music, Dance, Drama)</option>
+                <option value="11">Engineering (Mechanical, Civil, Electrical, IT)</option>
+                <option value="12">Medical Sciences</option>
+                <option value="13">Administration / Management</option>
+                <option value="14">Library & Information Science</option>
+                <option value="15">Career Counselling</option>
+            </select>
+        </div>
+
+        <!-- Required Competencies (renamed from Job Skill) -->
+        <div class="col-xl-12 col-md-12 col-sm-12 mb-5">
+            <label for="skill_id" class="form-label">Required Competencies:</label>
+            <span class="required">*</span>
+            <select class="form-select select2-hidden-accessible" id="SkillId" multiple="" data-control="select2"
+                required="" name="jobsSkill[]" tabindex="-1" aria-hidden="true" data-select2-id="select2-data-SkillId">
+                <option value="1">Subject Matter Expertise</option>
+                <option value="2">Curriculum Design & Development</option>
+                <option value="3">Classroom Management</option>
+                <option value="4">Digital Literacy (MS Office, Google Suite, LMS)</option>
+                <option value="5">Online Teaching Tools (Zoom, Google Meet, Blackboard)</option>
+                <option value="6">Assessment & Evaluation</option>
+                <option value="7">Student Mentoring & Counselling</option>
+                <option value="8">Research & Publication</option>
+                <option value="9">Communication Skills</option>
+                <option value="10">Leadership & Administration</option>
+                <option value="11">Educational Technology / EdTech</option>
+                <option value="12">Special Education / Inclusive Learning</option>
+            </select>
+        </div>
+
+        <!-- Description -->
+        <div class="col-xl-12 col-md-12 col-sm-12 mb-5">
+            <label for="description" class="form-label">Description:</label>
+            <span class="required">*</span>
+            <div class="ql-toolbar ql-snow">
+                <span class="ql-formats">
+                    <button type="button" class="ql-bold"><svg viewBox="0 0 18 18">
+                            <path class="ql-stroke"
+                                d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z">
+                            </path>
+                            <path class="ql-stroke"
+                                d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z">
+                            </path>
+                        </svg></button>
+                    <button type="button" class="ql-italic"><svg viewBox="0 0 18 18">
+                            <line class="ql-stroke" x1="7" x2="13" y1="4" y2="4"></line>
+                            <line class="ql-stroke" x1="5" x2="11" y1="14" y2="14"></line>
+                            <line class="ql-stroke" x1="8" x2="10" y1="14" y2="4"></line>
+                        </svg></button>
+                    <button type="button" class="ql-underline"><svg viewBox="0 0 18 18">
+                            <path class="ql-stroke" d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"></path>
+                            <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="12" x="3" y="15"></rect>
+                        </svg></button>
+                    <button type="button" class="ql-strike"><svg viewBox="0 0 18 18">
+                            <line class="ql-stroke ql-thin" x1="15.5" x2="2.5" y1="8.5" y2="9.5"></line>
+                            <path class="ql-fill"
+                                d="M9.007,8C6.542,7.791,6,7.519,6,6.5,6,5.792,7.283,5,9,5c1.571,0,2.765.679,2.969,1.309a1,1,0,0,0,1.9-.617C13.356,4.106,11.354,3,9,3,6.2,3,4,4.538,4,6.5a3.2,3.2,0,0,0,.5,1.843Z">
+                            </path>
+                            <path class="ql-fill"
+                                d="M8.984,10C11.457,10.208,12,10.479,12,11.5c0,0.708-1.283,1.5-3,1.5-1.571,0-2.765-.679-2.969-1.309a1,1,0,1,0-1.9.617C4.644,13.894,6.646,15,9,15c2.8,0,5-1.538,5-3.5a3.2,3.2,0,0,0-.5-1.843Z">
+                            </path>
+                        </svg></button>
+                </span>
+                <span class="ql-formats">
+                    <button type="button" class="ql-clean"><svg class="" viewBox="0 0 18 18">
+                            <line class="ql-stroke" x1="5" x2="13" y1="3" y2="3"></line>
+                            <line class="ql-stroke" x1="6" x2="9.35" y1="12" y2="3"></line>
+                            <line class="ql-stroke" x1="11" x2="15" y1="11" y2="15"></line>
+                            <line class="ql-stroke" x1="15" x2="11" y1="11" y2="15"></line>
+                            <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="7" x="2" y="14"></rect>
+                        </svg></button>
+                </span>
+            </div>
+            <div id="details" class="ql-container ql-snow">
+                <div class="ql-editor ql-blank" data-gramm="false" contenteditable="true"
+                    data-placeholder="Enter Description">
+                    <p><br></p>
+                </div>
+                <div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
+                <div class="ql-tooltip ql-hidden"><a class="ql-preview" rel="noopener noreferrer" target="_blank"
+                        href="about:blank"></a><input type="text" data-formula="e=mc^2" data-link="https://quilljs.com"
+                        data-video="Embed URL"><a class="ql-action"></a><a class="ql-remove"></a></div>
+            </div>
+            <input id="job_desc" name="description" type="hidden">
+        </div>
+
+        <!-- Key Responsibilities -->
+        <div class="col-xl-12 col-md-6 col-sm-12 mb-5">
+            <label for="key_responsibilities" class="form-label">Key Responsibilities:</label>
+            <span class="required">*</span>
+            <div class="ql-toolbar ql-snow">
+                <span class="ql-formats">
+                    <button type="button" class="ql-bold"><svg viewBox="0 0 18 18">
+                            <path class="ql-stroke"
+                                d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z">
+                            </path>
+                            <path class="ql-stroke"
+                                d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z">
+                            </path>
+                        </svg></button>
+                    <button type="button" class="ql-italic"><svg viewBox="0 0 18 18">
+                            <line class="ql-stroke" x1="7" x2="13" y1="4" y2="4"></line>
+                            <line class="ql-stroke" x1="5" x2="11" y1="14" y2="14"></line>
+                            <line class="ql-stroke" x1="8" x2="10" y1="14" y2="4"></line>
+                        </svg></button>
+                    <button type="button" class="ql-underline"><svg viewBox="0 0 18 18">
+                            <path class="ql-stroke" d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"></path>
+                            <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="12" x="3" y="15"></rect>
+                        </svg></button>
+                    <button type="button" class="ql-strike"><svg viewBox="0 0 18 18">
+                            <line class="ql-stroke ql-thin" x1="15.5" x2="2.5" y1="8.5" y2="9.5"></line>
+                            <path class="ql-fill"
+                                d="M9.007,8C6.542,7.791,6,7.519,6,6.5,6,5.792,7.283,5,9,5c1.571,0,2.765.679,2.969,1.309a1,1,0,0,0,1.9-.617C13.356,4.106,11.354,3,9,3,6.2,3,4,4.538,4,6.5a3.2,3.2,0,0,0,.5,1.843Z">
+                            </path>
+                            <path class="ql-fill"
+                                d="M8.984,10C11.457,10.208,12,10.479,12,11.5c0,0.708-1.283,1.5-3,1.5-1.571,0-2.765-.679-2.969-1.309a1,1,0,1,0-1.9.617C4.644,13.894,6.646,15,9,15c2.8,0,5-1.538,5-3.5a3.2,3.2,0,0,0-.5-1.843Z">
+                            </path>
+                        </svg></button>
+                </span>
+                <span class="ql-formats">
+                    <button type="button" class="ql-clean"><svg class="" viewBox="0 0 18 18">
+                            <line class="ql-stroke" x1="5" x2="13" y1="3" y2="3"></line>
+                            <line class="ql-stroke" x1="6" x2="9.35" y1="12" y2="3"></line>
+                            <line class="ql-stroke" x1="11" x2="15" y1="11" y2="15"></line>
+                            <line class="ql-stroke" x1="15" x2="11" y1="11" y2="15"></line>
+                            <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="7" x="2" y="14"></rect>
+                        </svg></button>
+                </span>
+            </div>
+            <div id="response" class="ql-container ql-snow">
+                <div class="ql-editor ql-blank" data-gramm="false" contenteditable="true"
+                    data-placeholder="Enter Key Responsibilities">
+                    <p><br></p>
+                </div>
+                <div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
+                <div class="ql-tooltip ql-hidden"><a class="ql-preview" rel="noopener noreferrer" target="_blank"
+                        href="about:blank"></a><input type="text" data-formula="e=mc^2" data-link="https://quilljs.com"
+                        data-video="Embed URL"><a class="ql-action"></a><a class="ql-remove"></a></div>
+            </div>
+            <input id="key_responsibilities" name="key_responsibilities" type="hidden">
+        </div>
+
+        <!-- Gender -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="no_preference" class="form-label">Gender Preference:</label>
+            <select id="preferenceId" class="form-select select2-hidden-accessible" data-control="select2"
+                name="no_preference" tabindex="-1" aria-hidden="true" data-select2-id="select2-data-preferenceId">
+                <option selected="selected" value="" data-select2-id="select2-data-368-jr93">Select Gender Preference
+                </option>
+                <option value="2">Both / No Preference</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select>
+        </div>
+
+        <!-- Job Expiry Date -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="job_expiry_date" class="form-label">Job Posting Expiry Date:</label>
+            <span class="required">*</span>
+            <div class="input-group">
+                <div class="input-group-text border-0">
+
+                </div>
+                <input type="text" name="job_expiry_date" id="availableAt"
+                    class="form-control expiryDatepicker bg-white flatpickr-input" autocomplete="off" value=""
+                    placeholder="Job Posting Expiry Date" readonly="readonly">
+            </div>
+        </div>
+
+        <!-- Salary From -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="salary_from" class="form-label">Salary From:</label>
+            <span class="required">*</span>
+            <input class="form-control salary" id="fromSalary" required="" placeholder="Salary From" name="salary_from"
+                type="text" value="">
+        </div>
+
+        <!-- Salary To -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="salary_to" class="form-label">Salary To:</label>
+            <span class="required">*</span>
+            <input class="form-control salary" id="toSalary" required="" placeholder="Salary To" name="salary_to"
+                type="text" value="">
+            <span id="salaryToErrorMsg" class="text-danger"></span>
+        </div>
+
+        <!-- Currency -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="currency_id" class="form-label">Currency:</label>
+            <span class="required">*</span>
+            <select id="currencyId" class="form-select select2-hidden-accessible" data-control="select2" required=""
+                name="currency_id" tabindex="-1" aria-hidden="true" data-select2-id="select2-data-currencyId">
+                <option selected="selected" value="" data-select2-id="select2-data-505-1c6v">Select Currency</option>
+                <option value="1">AED United Arab Emirates Dirham</option>
+                <option value="2">AFN Afghanistan Afghani</option>
+                <option value="3">ALL Albania Lek</option>
+                <option value="4">AMD Armenian Dram</option>
+                <option value="5">ANG Netherlands Antilles Guilder</option>
+                <option value="6">AOA Angola kwanza</option>
+                <option value="7">ARS Argentina Peso</option>
+                <option value="133">AUD Australian Dollar</option>
+                <option value="8">AWG Aruba Guilder</option>
+                <option value="9">AZN Azerbaijan Manat</option>
+                <option value="10">BAM Bosnia and Herzegovina Convertible Marka</option>
+                <option value="11">BBD Barbados Dollar</option>
+                <option value="12">BDT Bangladesh Taka</option>
+                <option value="13">BGN Bulgaria Lev</option>
+                <option value="113">BIF Burundi Franc</option>
+                <option value="14">BMD Bermuda Dollar</option>
+                <option value="15">BND Brunei Darussalam Dollar</option>
+                <option value="16">BOB Bolivia Boliviano</option>
+                <option value="17">BRL Brazil Real</option>
+                <option value="18">BSD Bahamas Dollar</option>
+                <option value="19">BWP Botswana Pula</option>
+                <option value="20">BZD Belize Dollar</option>
+                <option value="135">CAD Canadian Dollar</option>
+                <option value="21">CDF Congo Congolese franc</option>
+                <option value="22">CHF Switzerland Franc</option>
+                <option value="114">CLP Chile Peso</option>
+                <option value="23">CNY China Yuan Renminbi</option>
+                <option value="24">COP Colombia Peso</option>
+                <option value="25">CRC Costa Rica Colon</option>
+                <option value="26">CVE Cape Verde Escudo</option>
+                <option value="27">CZK Czech Republic Koruna</option>
+                <option value="115">DJF Djibouti Franc</option>
+                <option value="28">DKK Denmark Krone</option>
+                <option value="29">DOP Dominican Republic Peso</option>
+                <option value="30">DZD Algeria Dinar</option>
+                <option value="31">EGP Egypt Pound</option>
+                <option value="32">ETB Ethiopia Birr</option>
+                <option value="130">EUR Euro</option>
+                <option value="33">FJD Fiji Dollar</option>
+                <option value="34">FKP Falkland Islands Pound</option>
+                <option value="35">GBP United Kingdom Pound</option>
+                <option value="36">GEL Georgia Lari</option>
+                <option value="37">GIP Gibraltar Pound</option>
+                <option value="38">GMD Gambia Dalasi</option>
+                <option value="116">GNF Guinea Franc</option>
+                <option value="39">GTQ Guatemala Quetzal</option>
+                <option value="40">GYD Guyana Dollar</option>
+                <option value="131">HKD Hong Kong Dollar</option>
+                <option value="41">HNL Honduras Lempira</option>
+                <option value="42">HRK Croatia Kuna</option>
+                <option value="43">HTG Haiti Gourde</option>
+                <option value="44">HUF Hungary Forint</option>
+                <option value="45">IDR Indonesia Rupiah</option>
+                <option value="46">ILS Israel Shekel</option>
+                <option value="132">INR Indian Rupee</option>
+                <option value="47">ISK Iceland Krona</option>
+                <option value="134">JMD Jamaican Dollar</option>
+                <option value="117">JPY Japan Yen</option>
+                <option value="48">KES Kenya Shilling</option>
+                <option value="49">KGS Kyrgyzstan Som</option>
+                <option value="50">KHR Cambodia Riel</option>
+                <option value="118">KMF Comoros Franc</option>
+                <option value="119">KRW Korea Won</option>
+                <option value="51">KYD Cayman Dollar</option>
+                <option value="52">KZT Kazakhstan Tenge</option>
+                <option value="53">LAK Laos Kip</option>
+                <option value="54">LBP Lebanon Pound</option>
+                <option value="55">LKR Sri Lanka Rupee</option>
+                <option value="56">LRD Liberia Dollar</option>
+                <option value="57">LSL Lesotho Loti</option>
+                <option value="58">MAD Morocco Dirham</option>
+                <option value="59">MDL Moldova Leu</option>
+                <option value="120">MGA Madagascar Ariary </option>
+                <option value="60">MKD Macedonia Denar</option>
+                <option value="61">MMK Myanmar Kyat</option>
+                <option value="62">MNT Mongolia Tughrik</option>
+                <option value="63">MOP Macau Pataca</option>
+                <option value="64">MRO Mauritania Ouguiya</option>
+                <option value="65">MUR Mauritius Rupee</option>
+                <option value="66">MVR Maldives Rufiyaa</option>
+                <option value="67">MWK Malawi Kwacha</option>
+                <option value="68">MXN Mexico Peso</option>
+                <option value="69">MYR Malaysia Ringgit</option>
+                <option value="70">MZN Mozambique Metical</option>
+                <option value="71">NAD Namibia Dollar</option>
+                <option value="72">NGN Nigeria Naira</option>
+                <option value="73">NIO Nicaragua Cordoba</option>
+                <option value="74">NOK Norway Krone</option>
+                <option value="75">NPR Nepal Rupee</option>
+                <option value="76">NZD New Zealand Dollar</option>
+                <option value="77">PAB Panama Balboa</option>
+                <option value="78">PEN Peru Nuevo Sol</option>
+                <option value="79">PGK Papua New Guinea Kina</option>
+                <option value="80">PHP Philippines Peso</option>
+                <option value="81">PKR Pakistan Rupee</option>
+                <option value="82">PLN Poland Zloty</option>
+                <option value="121">PYG Paraguay Guarani</option>
+                <option value="83">QAR Qatar Riyal</option>
+                <option value="84">RON Romania New Leu</option>
+                <option value="85">RSD Serbia Dinar</option>
+                <option value="86">RUB Russia Ruble</option>
+                <option value="122">RWF Rwanda Franc</option>
+                <option value="87">SAR Saudi Arabia Riyal</option>
+                <option value="88">SBD Solomon Islands Dollar</option>
+                <option value="89">SCR Seychelles Rupee</option>
+                <option value="90">SEK Sweden Krona</option>
+                <option value="91">SGD Singapore Dollar</option>
+                <option value="92">SHP Saint Helena Pound</option>
+                <option value="93">SLL Sierra Leone Leone</option>
+                <option value="94">SOS Somalia Shilling</option>
+                <option value="95">SRD Suriname Dollar</option>
+                <option value="96">STD São Tomé and Príncipe Dobra</option>
+                <option value="97">SZL Eswatini lilangeni</option>
+                <option value="98">THB Thailand Baht</option>
+                <option value="99">TJS Tajikistan Somoni</option>
+                <option value="100">TOP Tonga Paanga</option>
+                <option value="101">TRY Turkey Lira</option>
+                <option value="102">TTD Trinidad and Tobago Dollar</option>
+                <option value="103">TWD Taiwan New Dollar</option>
+                <option value="104">TZS Tanzania Shiling</option>
+                <option value="105">UAH Ukraine Hryvna</option>
+                <option value="123">UGX Uganda Shilling</option>
+                <option value="129">USD US Dollar</option>
+                <option value="106">UYU Uruguay Peso</option>
+                <option value="107">UZS Uzbekistan Som</option>
+                <option value="124">VND Viet Nam Dong</option>
+                <option value="125">VUV Vanuatu Vatu</option>
+                <option value="108">WST Samoa Tālā</option>
+                <option value="126">XAF Central Africa Central African CFA Franc</option>
+                <option value="109">XCD Eastern Caribbean States Dollar</option>
+                <option value="127">XOF West Africa West African CFA Franc</option>
+                <option value="128">XPF France Franc</option>
+                <option value="110">YER Yemen Rial</option>
+                <option value="111">ZAR South Africa Rand</option>
+                <option value="112">ZMW Zambia Kwacha</option>
+            </select>
+        </div>
+
+        <!-- Salary Period (UPDATED with "Annually" option) -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="salary_period_id" class="form-label">Salary Period:</label>
+            <span class="required">*</span>
+            <select id="salaryPeriodsId" class="form-select select2-hidden-accessible" data-control="select2"
+                required="" name="salary_period_id" tabindex="-1" aria-hidden="true"
+                data-select2-id="select2-data-salaryPeriodsId">
+                <option selected="selected" value="" data-select2-id="select2-data-53-to1s">Select Salary Period
+                </option>
+                <option value="1">Weekly Pay Period</option>
+                <option value="2">Bi-Weekly Pay Period</option>
+                <option value="3">Semi-Monthly Pay Period</option>
+                <option value="4">Monthly Pay Period</option>
+                <option value="5">Annually</option>
+            </select>
+        </div>
+
+        <!-- Country -->
+        <div class="col-xl-4 col-md-4 col-sm-12 mb-5">
+            <label for="country" class="form-label">Country:</label>
+            <select id="countryId" class="form-select select2-hidden-accessible" data-control="select2"
+                name="country_id" tabindex="-1" aria-hidden="true" data-select2-id="select2-data-countryId">
+                <option selected="selected" value="">Select Country</option>
+                <option value="101">India</option>
+                <option value="231">United States</option>
+                <option value="82">Germany</option>
+                <option value="75">France</option>
+                <option value="230">United Kingdom</option>
+                <option value="38">Canada</option>
+                <option value="102">Indonesia</option>
+                <option value="44">China</option>
+                <option value="109">Japan</option>
+                <option value="196">Singapore</option>
+                <option value="155">Netherlands The</option>
+                <option value="107">Italy</option>
+                <option value="212">Switzerland</option>
+                <option value="132">Malaysia</option>
+                <option value="1">Afghanistan</option>
+                <option value="2">Albania</option>
+                <option value="3">Algeria</option>
+            </select>
+        </div>
+
+        <!-- State -->
+        <div class="col-xl-4 col-md-4 col-sm-12 mb-5">
+            <label for="state" class="form-label">State:</label>
+            <select id="stateId" class="form-select select2-hidden-accessible" data-control="select2" name="state_id"
+                tabindex="-1" aria-hidden="true" data-select2-id="select2-data-stateId">
+                <option selected="selected" value="">Select State</option>
+            </select>
+        </div>
+
+        <!-- City -->
+        <div class="col-xl-4 col-md-4 col-sm-12 mb-5">
+            <label for="city" class="form-label">City:</label>
+            <select id="cityId" class="form-select select2-hidden-accessible" data-control="select2" name="city_id"
+                tabindex="-1" aria-hidden="true" data-select2-id="select2-data-cityId">
+                <option selected="selected" value="">Select City</option>
+            </select>
+        </div>
+
+        <!-- Career Level -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="career_level_id" class="form-label">Career Level:</label>
+            <select id="careerLevelsId" class="form-select select2-hidden-accessible" data-control="select2"
+                name="career_level_id" tabindex="-1" aria-hidden="true" data-select2-id="select2-data-careerLevelsId">
+                <option selected="selected" value="">Select Career Level</option>
+                <option value="1">Trainee / Intern</option>
+                <option value="2">Junior Faculty (0-3 years)</option>
+                <option value="3">Faculty (3-7 years)</option>
+                <option value="4">Senior Faculty (7-15 years)</option>
+                <option value="5">Lead / Principal Faculty</option>
+                <option value="6">Head of Department</option>
+                <option value="7">Deputy Dean / Associate Dean</option>
+                <option value="8">Dean / Director</option>
+                <option value="9">Principal / Rector</option>
+            </select>
+        </div>
+
+        <!-- Work Schedule (renamed from Job Shift) -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="job_shift_id" class="form-label">Work Schedule:</label>
+            <select id="jobShiftId" class="form-select select2-hidden-accessible" data-control="select2"
+                name="job_shift_id" tabindex="-1" aria-hidden="true" data-select2-id="select2-data-jobShiftId">
+                <option selected="selected" value="">Select Work Schedule</option>
+                <option value="1">Morning Shift (6 AM - 2 PM)</option>
+                <option value="2">Afternoon Shift (1 PM - 6 PM)</option>
+                <option value="3">Full Day (6 AM - 6 PM with breaks)</option>
+                <option value="4">Evening Shift (4 PM - 8 PM)</option>
+                <option value="5">Flexible Hours</option>
+                <option value="6">Hybrid (Online + Classroom)</option>
+                <option value="7">Online / Remote</option>
+                <option value="8">As per Academic Calendar</option>
+            </select>
+        </div>
+
+        <!-- Specializations / Keywords (renamed from Job Tag) -->
+        <div class="col-xl-12 col-md-12 col-sm-12 mb-5">
+            <label for="tagId" class="form-label">Specializations / Keywords:</label>
+            <select class="form-select select2-hidden-accessible" id="tagId" data-control="select2" multiple=""
+                name="jobTag[]" tabindex="-1" aria-hidden="true" data-select2-id="select2-data-tagId">
+                <option value="1">STEM (Science, Technology, Engineering, Math)</option>
+                <option value="2">Language Arts</option>
+                <option value="3">Research-Oriented</option>
+                <option value="4">Industry-Linked</option>
+                <option value="5">CBSE Curriculum</option>
+                <option value="6">ICSE Curriculum</option>
+                <option value="7">State Board</option>
+                <option value="8">International Curriculum (IB, Cambridge)</option>
+                <option value="9">Skill Development</option>
+                <option value="10">Extracurricular Activities</option>
+                <option value="11">Mentorship & Guidance</option>
+                <option value="12">EdTech Integration</option>
+                <option value="13">Special Education</option>
+            </select>
+        </div>
+
+        <!-- Degree Level -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="degree_level_id" class="form-label">Required Degree Level:</label>
+            <select id="requiredDegreeLevelId" class="form-select select2-hidden-accessible" data-control="select2"
+                name="degree_level_id" tabindex="-1" aria-hidden="true"
+                data-select2-id="select2-data-requiredDegreeLevelId">
+                <option selected="selected" value="">Select Degree Level</option>
+                <option value="1">Bachelor's Degree (B.A., B.Sc., B.Com, B.Tech)</option>
+                <option value="2">Master's Degree (M.A., M.Sc., M.Com, M.Tech)</option>
+                <option value="3">B.Ed (Bachelor of Education)</option>
+                <option value="4">M.Ed (Master of Education)</option>
+                <option value="5">D.Ed (Diploma in Education)</option>
+                <option value="6">PGDM (Post Graduate Diploma)</option>
+                <option value="7">Ph.D.</option>
+                <option value="8">Professional Certifications (PGCE, TESOL, etc.)</option>
+                <option value="9">Other Post-Doctoral Qualifications</option>
+            </select>
+        </div>
+
+        <!-- Specific Role (renamed from Position) -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="position" class="form-label">Specific Role:</label>
+            <span class="required">*</span>
+            <input id="positionId" class="form-control"
+                placeholder="e.g. Physics Teacher (Class XI-XII), Assistant Professor (Economics)" required=""
+                maxlength="255" name="position" type="text">
+        </div>
+
+        <!-- Job Experience -->
+        <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
+            <label for="experience" class="form-label">Job Experience (in years):</label>
+            <span class="required">*</span>
+            <input id="experienceId" class="form-control" placeholder="Job Experience (in years)" required="" min="0"
+                max="255" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                name="experience" type="text">
+        </div>
+
+        <!-- Hide Salary -->
+        <div class="col-xl-3 col-md-3 col-sm-12 mb-5">
+            <label class="form-label">Hide Salary:</label><br>
+            <label class="form-check form-switch form-switch-sm float-start">
+                <input type="checkbox" name="hide_salary" class="form-check-input" value="1" id="salary">
+            </label>
+        </div>
+
+        <!-- REMOVED: Is Freelance field (not applicable to education sector) -->
+
+        <!-- Submit Buttons -->
+        <div class="d-flex justify-content-end mt-5">
+            <input name="saveAsDraft" type="hidden" value="" id="saveAsDraft">
+            <button type="submit" name="saveDraft" class="btn btn-primary me-3 saveDraft" id="saveDraft" value="draft"
+                data-loading-text="<span class='spinner-border spinner-border-sm'></span> Processing...">Save As
+                Draft</button>
+            <button type="submit" name="save" class="btn btn-primary me-3" id="jobsSaveBtn"
+                data-loading-text="<span class='spinner-border spinner-border-sm'></span> Processing...">Save</button>
+            <a href="http://127.0.0.1:8000/employer/jobs" class="btn btn-secondary me-2">Cancel</a>
+        </div>
+    </div>
+</form>

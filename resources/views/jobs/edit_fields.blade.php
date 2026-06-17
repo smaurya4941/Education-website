@@ -93,9 +93,8 @@
     </div>
     <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
         {{ Form::label('country', __('messages.company.country').':',  ['class' => 'form-label ']) }}
-        <span class="required"></span>
         <div class="input-group flex-nowrap">
-            {{ Form::select('country_id', $data['countries'], null, ['id'=>'countryId','class' => 'form-select','placeholder' => __('messages.company.select_country'),'required', 'data-control'=>'select2']) }}
+            {{ Form::select('country_id', $data['countries'], null, ['id'=>'countryId','class' => 'form-select','placeholder' => __('messages.company.select_country'), 'data-control'=>'select2']) }}
             <div class="input-group-text border-0">
                 <a href="javascript:void(0)" class=" text-gray-500 createCountryModal"><i class="fa fa-plus"></i></a>
             </div>
@@ -103,7 +102,6 @@
     </div>
     <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
         {{ Form::label('state', __('messages.company.state').':',  ['class' => 'form-label ']) }}
-        <span class="required"></span>
         <div class="input-group flex-nowrap">
             {{ Form::select('state_id', (isset($states) && $states!=null?$states:[]), null, ['id'=>'stateId','class' => 'form-select','placeholder' => __('messages.company.select_state'), 'data-control'=>'select2']) }}
             <div class="input-group-text border-0">
@@ -112,10 +110,9 @@
         </div>
     </div>
     <div class="col-xl-6 col-md-6 col-sm-12 mb-5">
-        {{ Form::label('city', __('messages.company.city').':', ['class' => 'form-label ']) }}<span
-                class="required"></span>
+        {{ Form::label('city', __('messages.company.city').':', ['class' => 'form-label ']) }}
         <div class="input-group flex-nowrap">
-            {{ Form::select('city_id', (isset($cities) && $cities!=null?$cities:[]), null, ['id'=>'cityId','class' => 'form-select','placeholder' => __('messages.company.select_city'),'required', 'data-control'=>'select2']) }}
+            {{ Form::select('city_id', (isset($cities) && $cities!=null?$cities:[]), null, ['id'=>'cityId','class' => 'form-select','placeholder' => __('messages.company.select_city'), 'data-control'=>'select2']) }}
             <div class="input-group-text border-0">
                 <a href="javascript:void(0)" class=" text-gray-500 createCityModal"><i class="fa fa-plus"></i></a>
             </div>

@@ -39,8 +39,6 @@ class UpdateJobRequest extends FormRequest
 
     public function messages(): array
     {
-        return $messages = [
-            'state_id.required' => __('messages.state_required'),
-        ];
+        return [];
     }
 }
