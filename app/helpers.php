@@ -1046,15 +1046,15 @@ if (! function_exists('googleJobSchema')) {
                     '@type' => 'Place',
                     'address' => [
                         '@type' => 'PostalAddress',
-                        'streetAddress' => $job->company->location ?? $job->company->location,
-                        'addressLocality' => $job->company->location2 ?? $job->company->location2,
-                        'addressRegion' => $job->city->name ?? $job->city->name,
-                        'addressCountry' => $job->country->name ?? $job->country->name,
+                        'streetAddress' => optional($job->company)->location,
+                        'addressLocality' => optional($job->company)->location2,
+                        'addressRegion' => optional($job->city)->name,
+                        'addressCountry' => optional($job->country)->name,
                     ],
                 ])
                 ->baseSalary([
                     '@type' => 'MonetaryAmount',
-                    'currency' => $job->currency->currency_name,
+                    'currency' => optional($job->currency)->currency_name,
                     'value' => [
                         '@type' => 'QuantitativeValue',
                         'value' => $job->salary_from,
