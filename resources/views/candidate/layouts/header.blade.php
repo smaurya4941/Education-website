@@ -8,7 +8,6 @@
                 <img src="{{getLogoUrl()}}"
                      class="img-fluid" alt="profile image">
             </div>
-            <span class="text-gray-900 fs-4 d-none d-sm-block"> {{ getAppName() }}</span>
         </a>
     </div>
     <div class="d-flex align-items-stretch justify-content-xl-between justify-content-end flex-grow-1">
@@ -16,13 +15,13 @@
              id="nav-header">
             @include('candidate.layouts.sidebar')
         </nav>
-        <ul class="nav align-items-stretch flex-nowrap">
-            {{-- <li class="px-xxl-3 px-2 d-flex align-items-stretch">
+        <ul class="nav align-items-stretch flex-nowrap gap-2">
+            {{-- <li class="px-1 d-flex align-items-stretch">
                 <a href="{{ route('theme.mode') }}" class="d-flex align-items-center" >
                     <i class="fas user-check-icon {{ getLoggedInUser()->theme_mode ? 'fa-sun' : 'fa-moon' }} fs-2"></i>
                 </a>
             </li> --}}
-            <li class="px-xxl-3 px-2 d-flex align-items-stretch">
+            <li class="px-1 d-flex align-items-stretch">
                 <div class="dropdown custom-dropdown d-flex align-items-center py-4">
                     <button class="btn dropdown-toggle hide-arrow {{ checkLanguageSession() == 'ar' ? 'pe-2 ps-0' : 'ps-2 pe-0' }} py-0 position-relative" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -72,17 +71,15 @@
                 </div>
             </li>
 
-            <li class="px-xxl-3 px-2 d-flex align-items-stretch">
+            <li class="px-1 d-flex align-items-stretch">
                 <div class="dropdown dropdown-transparent d-flex align-items-stretch">
                     <button class="btn dropdown-toggle px-0 text-gray-600 d-flex align-items-center" type="button"
                             id="dropdownMenuButton1" data-bs-auto-close="outside"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="image image-circle image-mini d-flex align-items-center {{ checkLanguageSession() == 'ar' ? 'ms-sm-3' : 'me-sm-3' }}">
+                        <div class="image image-circle image-mini d-flex align-items-center">
                             <img src="{{ Auth::user()->candidate->candidate_url }}"
                                  class="img-fluid" alt="profile image">
                         </div>
-                        {{\Illuminate\Support\Facades\Auth::user()->full_name}}
-{{--                        <i class="fa-solid fa-angle-down ms-2"></i>--}}
                     </button>
                     <div class="dropdown-menu py-7 pb-4" aria-labelledby="dropdownMenuButton1"
                          data-bs-auto-close="outside">
