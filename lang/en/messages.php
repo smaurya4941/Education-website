@@ -613,7 +613,7 @@ return [
     'job_experience' => [
         'new_job_experience' => 'New Job Experience',
         'edit_job_experience' => 'Edit Job Experience',
-        'job_experience' => 'Job Experience (in years)',
+        'job_experience' => 'Minimum Job Experience Required(in years)',
         'language' => 'Language',
         'is_active' => 'Is Active',
         'is_default' => 'Is Default',
