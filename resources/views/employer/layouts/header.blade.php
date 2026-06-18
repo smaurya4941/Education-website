@@ -4,25 +4,23 @@
 <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between">
     
     {{-- Left Side: Logo & Navigation --}}
-    <div class="flex items-center gap-8">
+    <div class="flex items-center gap-4">
         {{-- Logo --}}
         <a href="{{ route('front.home') }}" target="_blank" class="flex items-center gap-3 no-underline">
             <div class="w-9 h-9 rounded-lg bg-purple-50 flex items-center justify-center overflow-hidden">
                 <img src="{{ getLogoUrl() }}" class="max-h-8 w-auto object-contain" alt="{{ getAppName() }}">
             </div>
-            <span class="text-gray-900 font-extrabold text-lg tracking-tight hidden sm:block">
-                {{ getAppName() }}
-            </span>
         </a>
         
         {{-- Desktop Navigation Menu --}}
         <nav class="hidden lg:flex items-center" id="nav-header">
             @include('employer.layouts.sidebar')
         </nav>
+        
     </div>
 
     {{-- Right Side: Actions & Profile --}}
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-2">
         
         {{-- Dark Mode Toggle --}}
         <a href="{{ route('theme.mode') }}" class="w-10 h-10 rounded-lg flex items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-[#a100ff] transition-all">
@@ -84,12 +82,11 @@
 
         {{-- Profile Dropdown --}}
         <div class="dropdown relative">
-            <button class="dropdown-toggle flex items-center gap-2 px-3 py-1.5 rounded-lg border-0 bg-transparent hover:bg-gray-50 text-gray-700 transition-all" type="button"
+            <button class="dropdown-toggle flex items-center gap-2 pr-3 pl-0 py-1.5 rounded-lg border-0 bg-transparent hover:bg-gray-50 text-gray-700 transition-all" type="button"
                     id="profileDropdownBtn" data-bs-auto-close="outside"
                     data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="{{ Auth::user()->company->company_url }}"
                      class="w-8 h-8 rounded-full object-cover border-2 border-[#a100ff]" alt="profile image">
-                <span class="text-sm font-semibold hidden md:block">{{ Auth::user()->full_name }}</span>
                 <span class="material-symbols-outlined text-gray-400 text-lg hidden md:block">expand_more</span>
             </button>
             <div class="dropdown-menu dropdown-menu-end border-0 shadow-xl rounded-xl p-0 w-64 bg-white mt-2" aria-labelledby="profileDropdownBtn"
