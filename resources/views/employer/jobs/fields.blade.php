@@ -118,11 +118,11 @@
     </div>
     <div class="col-xl-3 col-md-3 col-sm-12 mb-5">
         <label class="form-label">{{ __('messages.job.hide_salary').':' }}</label><br>
-        <label class="form-check form-switch form-switch-sm {{ checkLanguageSession() == 'ar' ? 'float-end' : 'float-start' }}">
-            <input type="checkbox" name="hide_salary" class="form-check-input"
+        <div class="form-check form-switch mt-1">
+            <input type="checkbox" name="hide_salary" class="form-check-input border border-secondary {{ checkLanguageSession() == 'ar' ? 'float-end' : 'float-start' }}"
                    value="1"
-                   id="salary">
-        </label>
+                   role="switch" id="salary">
+        </div>
     </div>
 
     <!-- Submit Field -->

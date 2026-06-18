@@ -10,7 +10,7 @@
             <div class="d-flex text-white align-items-center">
                 <i class="fa-solid  fa-face-smile {{ checkLanguageSession() == 'ar' ? 'ms-4' : 'me-4' }}"></i>
                 <div>
-                    <span class="text-white">{{ $message['message'] }}</span>
+                    <span class="text-white">{!! $message['message'] !!}</span>
                 </div>
             </div>
         </div>

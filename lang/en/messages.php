@@ -1309,7 +1309,7 @@ return [
         'payment_not_complete' => 'Your Payment is not completed',
         'feature_job_price' => 'Featured jobs price should be greater than 0',
         'setting_update' => 'Setting updated successfully.',
-        'job_create_limit' => 'Job create limit exceeded of your account, Update your subscription plan.',
+        'job_create_limit' => '<strong style="font-size: 1.15em;">Job create limit exceeded of your account, Update your subscription plan.</strong>',
         'job_draft' => 'Job Draft saved successfully.',
         'job_save' => 'Job saved successfully.',
         'job_not_found' => 'Job Not Found.',

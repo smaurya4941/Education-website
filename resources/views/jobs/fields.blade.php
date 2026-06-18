@@ -187,10 +187,10 @@
      </div>
     <div class="col-xl-6 col-md-6 col-sm-12 mb-5 d-flex flex-column">
         <label class="form-label ">{{ __('messages.job.hide_salary').':' }}</label>
-        <label class="form-check form-switch form-switch-sm">
-            <input type="checkbox" name="hide_salary" class="form-check-input {{ checkLanguageSession() == 'ar' ? 'float-end' : 'float-start' }}"
-                   id="salary">
-        </label>
+        <div class="form-check form-switch mt-1">
+            <input type="checkbox" name="hide_salary" class="form-check-input border border-secondary {{ checkLanguageSession() == 'ar' ? 'float-end' : 'float-start' }}"
+                   role="switch" id="salary" value="1">
+        </div>
     </div>
 
 

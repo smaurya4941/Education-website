@@ -403,7 +403,7 @@ class JobRepository extends BaseRepository
 
         if ($subscription) {
             // retrieve job count
-            $jobCount = Job::whereStatus(Job::STATUS_OPEN)->where('company_id', $company->id)->where('is_created_by_admin', 0)->count();
+            $jobCount = Job::whereIn('status', [Job::STATUS_OPEN, Job::SELECT_PANDING])->where('company_id', $company->id)->where('is_created_by_admin', 0)->count();
 
             $maxJobCount = Plan::whereId($subscription->plan_id)->value('allowed_jobs');
 

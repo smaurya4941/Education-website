@@ -89,7 +89,7 @@ class JobController extends AppBaseController
             $input['status'] = (isset($request->saveAsDraft)) ? Job::STATUS_DRAFT : Job::STATUS_OPEN;
         }
 
-        if ($input['status'] == Job::STATUS_OPEN) {
+        if ($input['status'] != Job::STATUS_DRAFT) {
             if (! $this->checkJobLimit()) {
                 return redirect()->back()->withInput()->withErrors(['error' => __('messages.flash.job_create_limit')]);
             }
@@ -151,7 +151,7 @@ class JobController extends AppBaseController
      */
     public function update(Job $job, UpdateJobRequest $request): RedirectResponse
     {
-        if ($job->status != Job::STATUS_OPEN) {
+        if (! in_array($job->status, [Job::STATUS_OPEN, Job::SELECT_PANDING])) {
             if (! $this->checkJobLimit()) {
                 return redirect()->back()->withInput()->withErrors(['error' => __('messages.flash.job_create_limit')]);
             }
@@ -374,7 +374,7 @@ class JobController extends AppBaseController
     {
         /** @var Job $job */
         $job = Job::findOrFail($id);
-        if ($job->status != Job::STATUS_OPEN && $status == Job::STATUS_OPEN) {
+        if (! in_array($job->status, [Job::STATUS_OPEN, Job::SELECT_PANDING]) && in_array($status, [Job::STATUS_OPEN, Job::SELECT_PANDING])) {
             if (! $this->checkJobLimit()) {
                 return $this->sendError(__('messages.flash.job_create_limit'));
             }

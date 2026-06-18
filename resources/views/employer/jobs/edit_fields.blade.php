@@ -112,19 +112,19 @@
     </div>
     <div class="col-xl-3 col-md-3 col-sm-12 mb-5">
         <label class="form-label">{{ __('messages.job.hide_salary').':' }}</label>
-        <label class="form-check form-switch form-switch-sm">
-            <input type="checkbox" name="hide_salary" class="form-check-input"
+        <div class="form-check form-switch mt-1">
+            <input type="checkbox" name="hide_salary" class="form-check-input border border-secondary {{ checkLanguageSession() == 'ar' ? 'float-end' : 'float-start' }}"
                    value="1"
-                   id="salary" {{$job->hide_salary == 1? 'checked' : ''}}>
-        </label>
+                   role="switch" id="salary" {{$job->hide_salary == 1? 'checked' : ''}}>
+        </div>
     </div>
     <div class="col-xl-3 col-md-3 col-sm-12 mb-5">
         <label class="form-label">{{ __('messages.job.is_freelance').':' }}</label>
-        <label class="form-check form-switch form-switch-sm">
-            <input type="checkbox" name="is_freelance" class="form-check-input"
+        <div class="form-check form-switch mt-1">
+            <input type="checkbox" name="is_freelance" class="form-check-input border border-secondary {{ checkLanguageSession() == 'ar' ? 'float-end' : 'float-start' }}"
                    value="1"
-                   id="freelance" {{$job->is_freelance == 1? 'checked' : ''}}>
-        </label>
+                   role="switch" id="freelance" {{$job->is_freelance == 1? 'checked' : ''}}>
+        </div>
     </div>
 
     <!-- Submit Field -->
