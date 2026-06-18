@@ -3,8 +3,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/inttel/css/intlTelInput.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.css') }}">
     <style>
-        .teacher-profile-wrap{max-width:920px;margin:0 auto}
-        .teacher-progress{display:flex;align-items:flex-start;justify-content:space-between;width:100%;margin-bottom:2rem}
+        .teacher-profile-wrap{max-width:850px;margin:0 auto}
+        .teacher-progress{display:flex;align-items:flex-start;justify-content:space-between;width:100%;margin-bottom:1.5rem}
         .teacher-step-node{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:92px}
         .teacher-step-circle{width:34px;height:34px;border-radius:50%;border:1px solid #ede8f5;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;color:#807287;transition:all 0.3s;}
         .teacher-step-circle.active{background:#a100ff;border-color:#a100ff;color:#fff;box-shadow:0 4px 12px rgba(161,0,255,0.2)}
@@ -16,22 +16,34 @@
         .teacher-step-line.done{background:#10b981}
         .teacher-form-section{display:none}
         .teacher-form-section.visible{display:block;animation:fadeIn 0.3s ease-in;}
-        .teacher-section-title{font-size:1.5rem;font-weight:800;color:#1b1c1c;margin-bottom:.25rem;font-family:'Plus Jakarta Sans',sans-serif;}
-        .teacher-section-sub{color:#807287;margin-bottom:1.5rem;font-size:0.95rem;font-family:'Plus Jakarta Sans',sans-serif;}
-        .teacher-check-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+        .teacher-section-title{font-size:1.25rem;font-weight:800;color:#1b1c1c;margin-bottom:.25rem;font-family:'Plus Jakarta Sans',sans-serif;}
+        .teacher-section-sub{color:#807287;margin-bottom:1.25rem;font-size:0.9rem;font-family:'Plus Jakarta Sans',sans-serif;}
+        .teacher-check-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
         .teacher-chip-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.5rem}
         .teacher-chip input{display:none}
-        .teacher-chip span{display:block;text-align:center;border:1px solid #ede8f5;border-radius:.75rem;padding:.65rem .25rem;cursor:pointer;color:#4e4256;transition:all 0.2s;background:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;}
+        .teacher-chip span{display:block;text-align:center;border:1px solid #ede8f5;border-radius:.5rem;padding:.5rem .25rem;cursor:pointer;color:#4e4256;transition:all 0.2s;background:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;}
         .teacher-chip input:checked+span{background:#faf7ff;border-color:#e1b6ff;color:#a100ff;font-weight:700;box-shadow:0 2px 8px rgba(161,0,255,0.08)}
-        .teacher-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
-        .teacher-tag{background:#faf7ff;border:1px solid #e1b6ff;border-radius:20px;padding:.35rem .85rem;color:#a100ff;display:inline-flex;gap:.5rem;align-items:center;font-weight:600;font-size:0.9rem;font-family:'Plus Jakarta Sans',sans-serif;}
-        .teacher-tag button{border:0;background:transparent;color:#a100ff;line-height:1;font-size:1.1rem;}
+        .teacher-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem}
+        .teacher-tag{background:#faf7ff;border:1px solid #e1b6ff;border-radius:20px;padding:.25rem .75rem;color:#a100ff;display:inline-flex;gap:.5rem;align-items:center;font-weight:600;font-size:0.85rem;font-family:'Plus Jakarta Sans',sans-serif;}
+        .teacher-tag button{border:0;background:transparent;color:#a100ff;line-height:1;font-size:1rem;}
         
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 575.98px){
             .teacher-progress{overflow-x:auto;padding-bottom:.5rem}
             .teacher-check-grid{grid-template-columns:1fr}
             .teacher-chip-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+        }
+        .mobile-itel-width .iti { width: 100% !important; display: block !important; }
+        .mobile-itel-width .iti input { padding-left: 95px !important; width: 100% !important; }
+        
+        /* Force checkboxes to appear natively if theme hides them */
+        .teacher-form-section .form-check-input {
+            border: 1px solid #a49da8 !important;
+            appearance: auto !important;
+            -webkit-appearance: auto !important;
+            width: 1.25rem !important;
+            height: 1.25rem !important;
+            margin-top: .15rem !important;
         }
     </style>
 @endpush
@@ -52,8 +64,8 @@
         $dobValue = old('dob', ! empty($user->dob) ? \Carbon\Carbon::parse($user->dob)->format('Y-m-d') : null);
     @endphp
     <div class="teacher-profile-wrap">
-        <div class="bg-white border border-[#ede8f5] rounded-[24px] shadow-[0_4px_20px_rgba(161,0,255,0.06)] mb-8">
-            <div class="p-6 lg:p-10">
+        <div class="bg-white border border-[#ede8f5] rounded-[24px] shadow-[0_4px_20px_rgba(161,0,255,0.06)] mb-6">
+            <div class="p-5 lg:p-8">
                 {{ Form::model($user, ['route' => 'candidate-profile.update', 'files' => true, 'id' => 'candidateProfileUpdate', 'method' => 'put', 'novalidate' => true]) }}
                 {{ Form::hidden('isEdit', true, ['id' => 'isEdit']) }}
                 {{ Form::hidden('immediate_available', 1) }}
@@ -70,54 +82,30 @@
                     <p class="teacher-section-sub">Let schools know who you are.</p>
 
                     <div class="row">
-                        <div class="col-md-6 mb-5">
-                            {{ Form::label('first_name', 'First name:', ['class' => 'form-label']) }}<span class="required"></span>
-                            {{ Form::text('first_name', old('first_name', $user->first_name), ['class' => 'form-control', 'required', 'placeholder' => 'Priya']) }}
-                        </div>
-                        <div class="col-md-6 mb-5">
-                            {{ Form::label('last_name', 'Last name:', ['class' => 'form-label']) }}<span class="required"></span>
-                            {{ Form::text('last_name', old('last_name', $user->last_name), ['class' => 'form-control', 'required', 'placeholder' => 'Verma']) }}
-                        </div>
-                        <div class="col-md-6 mb-5">
-                            {{ Form::label('email', 'Email address:', ['class' => 'form-label']) }}<span class="required"></span>
-                            {{ Form::email('email', old('email', $user->email), ['class' => 'form-control', 'required', 'placeholder' => 'priya.verma@email.com']) }}
-                        </div>
-                        <div class="col-md-6 mb-5 mobile-itel-width">
+                        <div class="col-md-6 mb-4 mobile-itel-width">
                             {{ Form::label('phone', 'Phone number:', ['class' => 'form-label']) }}<span class="required"></span>
                             {{ Form::tel('phone', old('phone', $user->phone), ['class' => 'form-control', 'required', 'id' => 'phoneNumber', 'placeholder' => '+91 98765 43210']) }}
                             {{ Form::hidden('region_code', old('region_code', $user->region_code), ['id' => 'prefix_code']) }}
                         </div>
-                        <div class="col-md-6 mb-5">
+                        <div class="col-md-6 mb-4">
                             {{ Form::label('dob', 'Date of birth:', ['class' => 'form-label']) }}
                             <input type="date" name="dob" class="form-control" value="{{ $dobValue }}">
                         </div>
-                        <div class="col-md-6 mb-5">
+                        <div class="col-md-6 mb-4">
                             {{ Form::label('gender', 'Gender:', ['class' => 'form-label']) }}
                             {{ Form::select('gender', ['1' => 'Female', '0' => 'Male', '2' => 'Non-binary', '3' => 'Prefer not to say'], $genderText, ['class' => 'form-select', 'placeholder' => 'Select']) }}
                         </div>
-                        <div class="col-md-4 mb-5">
+                        <div class="col-md-4 mb-4">
                             {{ Form::label('country_id', 'Country:', ['class' => 'form-label']) }}
                             {{ Form::select('country_id', $data['countries'], old('country_id', $user->country_id), ['class' => 'form-select', 'id' => 'countryId', 'placeholder' => 'Select country']) }}
                         </div>
-                        <div class="col-md-4 mb-5">
+                        <div class="col-md-4 mb-4">
                             {{ Form::label('state_id', 'State:', ['class' => 'form-label']) }}
                             {{ Form::select('state_id', isset($states) && $states != null ? $states : [], old('state_id', $user->state_id), ['id' => 'stateId', 'class' => 'form-select', 'placeholder' => 'Select state']) }}
                         </div>
-                        <div class="col-md-4 mb-5">
+                        <div class="col-md-4 mb-4">
                             {{ Form::label('city_id', 'City:', ['class' => 'form-label']) }}
                             {{ Form::select('city_id', isset($cities) && $cities != null ? $cities : [], old('city_id', $user->city_id), ['class' => 'form-select', 'id' => 'cityId', 'placeholder' => 'Select city']) }}
-                        </div>
-                        <div class="col-12 mb-5">
-                            {{ Form::label('address', 'City / location:', ['class' => 'form-label']) }}<span class="required"></span>
-                            {{ Form::text('address', old('address', $candidate->address), ['class' => 'form-control', 'required', 'placeholder' => 'Noida, Uttar Pradesh']) }}
-                        </div>
-                        <div class="col-md-6 mb-5">
-                            {{ Form::label('password', 'New password:', ['class' => 'form-label']) }}
-                            {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Min. 6 characters']) }}
-                        </div>
-                        <div class="col-md-6 mb-5">
-                            {{ Form::label('password_confirmation', 'Confirm password:', ['class' => 'form-label']) }}
-                            {{ Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Repeat new password']) }}
                         </div>
                     </div>
                 </div>
@@ -127,43 +115,27 @@
                     <p class="teacher-section-sub">Your academic background and teaching history.</p>
 
                     <div class="row">
-                        <div class="col-md-6 mb-5">
-                            {{ Form::label('degree_level_id', 'Degree:', ['class' => 'form-label']) }}<span class="required"></span>
-                            {{ Form::select('degree_level_id', $data['degreeLevels'], old('degree_level_id', $education->degree_level_id ?? null), ['class' => 'form-select', 'required', 'placeholder' => 'Select']) }}
-                        </div>
-                        <div class="col-md-6 mb-5">
-                            {{ Form::label('degree_title', 'Specialisation:', ['class' => 'form-label']) }}<span class="required"></span>
-                            {{ Form::text('degree_title', old('degree_title', $education->degree_title ?? null), ['class' => 'form-control', 'required', 'placeholder' => 'Mathematics, English Literature']) }}
-                        </div>
-                        <div class="col-md-6 mb-5">
-                            {{ Form::label('institute', 'University / institution:', ['class' => 'form-label']) }}
-                            {{ Form::text('institute', old('institute', $education->institute ?? null), ['class' => 'form-control', 'placeholder' => 'Delhi University']) }}
-                        </div>
-                        <div class="col-md-6 mb-5">
-                            {{ Form::label('year', 'Year of completion:', ['class' => 'form-label']) }}
-                            {{ Form::number('year', old('year', $education->year ?? null), ['class' => 'form-control', 'min' => 1970, 'max' => date('Y') + 1, 'placeholder' => date('Y')]) }}
-                            {{ Form::hidden('result', old('result', $education->result ?? 'Completed')) }}
-                        </div>
-                        <div class="col-12 mb-5">
+
+                        <div class="col-12 mb-4">
                             <label class="form-label">Teaching certifications</label>
                             <div class="teacher-check-grid">
                                 @foreach (['B.Ed (Bachelor of Education)', 'CTET (Central Teacher Eligibility Test)', 'STET (State Teacher Eligibility Test)', 'TET (Teacher Eligibility Test)', 'Other certification'] as $certification)
-                                    <label class="form-check">
+                                    <div class="form-check form-check-custom form-check-solid">
                                         <input class="form-check-input" type="checkbox" name="teaching_certifications[]" value="{{ $certification }}" @checked(in_array($certification, $certifications))>
-                                        <span class="form-check-label">{{ $certification }}</span>
-                                    </label>
+                                        <label class="form-check-label">{{ $certification }}</label>
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
-                        <div class="col-md-6 mb-5">
+                        <div class="col-md-6 mb-4">
                             {{ Form::label('experience', 'Total years of experience:', ['class' => 'form-label']) }}<span class="required"></span>
                             {{ Form::select('experience', [0 => 'Fresher (0 years)', 2 => '1-2 years', 5 => '3-5 years', 10 => '6-10 years', 11 => '10+ years'], old('experience', $candidate->experience), ['class' => 'form-select', 'required', 'placeholder' => 'Select']) }}
                         </div>
-                        <div class="col-md-6 mb-5">
+                        <div class="col-md-6 mb-4">
                             {{ Form::label('institution_type', 'Current / last institution type:', ['class' => 'form-label']) }}
                             {{ Form::select('institution_type', ['Government school' => 'Government school', 'Private school' => 'Private school', 'International school' => 'International school', 'College / University' => 'College / University', 'Coaching centre' => 'Coaching centre', 'Online tutoring' => 'Online tutoring', 'None (fresher)' => 'None (fresher)'], old('institution_type', $experience->institution_type ?? null), ['class' => 'form-select', 'placeholder' => 'Select']) }}
                         </div>
-                        <div class="col-12 mb-5">
+                        <div class="col-12 mb-4">
                             {{ Form::label('company', 'Previous institution name:', ['class' => 'form-label']) }}
                             {{ Form::text('company', old('company', $experience->company ?? null), ['class' => 'form-control', 'placeholder' => "St. Mary's High School, New Delhi"]) }}
                             {{ Form::hidden('experience_title', old('experience_title', $experience->experience_title ?? 'Teacher')) }}
@@ -175,7 +147,7 @@
                     <p class="teacher-section-title">Subjects & teaching level</p>
                     <p class="teacher-section-sub">Tell schools what and whom you can teach.</p>
 
-                    <div class="mb-5">
+                    <div class="mb-4">
                         <label class="form-label">Subjects you teach <span class="required"></span></label>
                         <div class="teacher-tags" data-tag-list="subjects"></div>
                         <div class="input-group">
@@ -184,38 +156,38 @@
                         </div>
                     </div>
 
-                    <div class="mb-5">
+                    <div class="mb-4">
                         <label class="form-label">Grade levels you can teach <span class="required"></span></label>
                         <div class="teacher-check-grid">
                             @foreach (['Pre-primary (Nursery-KG)', 'Primary (Class 1-5)', 'Middle school (Class 6-8)', 'Secondary (Class 9-10)', 'Senior secondary (Class 11-12)', 'Undergraduate / College'] as $level)
-                                <label class="form-check">
+                                <div class="form-check form-check-custom form-check-solid">
                                     <input class="form-check-input" type="checkbox" name="grade_levels[]" value="{{ $level }}" @checked(in_array($level, $gradeLevels))>
-                                    <span class="form-check-label">{{ $level }}</span>
-                                </label>
+                                    <label class="form-check-label">{{ $level }}</label>
+                                </div>
                             @endforeach
                         </div>
                     </div>
 
-                    <div class="mb-5">
+                    <div class="mb-4">
                         <label class="form-label">Medium of instruction</label>
                         <div class="teacher-check-grid">
                             @foreach (['English', 'Hindi', 'Bilingual', 'Regional language'] as $medium)
-                                <label class="form-check">
+                                <div class="form-check form-check-custom form-check-solid">
                                     <input class="form-check-input" type="checkbox" name="instruction_mediums[]" value="{{ $medium }}" @checked(in_array($medium, $mediums))>
-                                    <span class="form-check-label">{{ $medium }}</span>
-                                </label>
+                                    <label class="form-check-label">{{ $medium }}</label>
+                                </div>
                             @endforeach
                         </div>
                     </div>
 
-                    <div class="mb-5">
+                    <div class="mb-4">
                         <label class="form-label">Teaching mode preference</label>
                         <div class="teacher-check-grid">
                             @foreach (['Offline (in-school)', 'Online', 'Hybrid', 'Home tutoring'] as $mode)
-                                <label class="form-check">
+                                <div class="form-check form-check-custom form-check-solid">
                                     <input class="form-check-input" type="checkbox" name="teaching_modes[]" value="{{ $mode }}" @checked(in_array($mode, $modes))>
-                                    <span class="form-check-label">{{ $mode }}</span>
-                                </label>
+                                    <label class="form-check-label">{{ $mode }}</label>
+                                </div>
                             @endforeach
                         </div>
                     </div>
@@ -225,7 +197,7 @@
                     <p class="teacher-section-title">Availability & preferences</p>
                     <p class="teacher-section-sub">Help schools match you to the right opening.</p>
 
-                    <div class="mb-5">
+                    <div class="mb-4">
                         <label class="form-label">Available days</label>
                         <div class="teacher-chip-grid">
                             @foreach (['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as $day)
@@ -256,7 +228,7 @@
                         </div>
                     </div>
 
-                    <div class="mb-5">
+                    <div class="mb-4">
                         <label class="form-label">Languages you speak</label>
                         <div class="teacher-tags" data-tag-list="languages"></div>
                         <div class="input-group">
@@ -265,12 +237,12 @@
                         </div>
                     </div>
 
-                    <div class="mb-5">
+                    <div class="mb-4">
                         {{ Form::label('teaching_bio', 'Teaching philosophy / bio:', ['class' => 'form-label']) }}
                         {{ Form::textarea('teaching_bio', old('teaching_bio', $candidate->teaching_bio), ['class' => 'form-control', 'rows' => 4, 'placeholder' => 'Briefly describe your teaching approach, strengths, and motivation as an educator']) }}
                     </div>
 
-                    <div class="mb-5">
+                    <div class="mb-4">
                         {{ Form::label('resume_file', 'Upload resume / CV:', ['class' => 'form-label']) }}
                         {{ Form::file('resume_file', ['class' => 'form-control', 'accept' => '.pdf,.doc,.docx']) }}
                     </div>
@@ -283,8 +255,10 @@
 
                 <div class="d-flex justify-content-between mt-8">
                     <button type="button" class="btn btn-light" id="teacherProfileBack">Back</button>
-                    <button type="button" class="btn btn-primary" id="teacherProfileNext">Next <i class="fa-solid fa-arrow-right ms-2"></i></button>
-                    {{ Form::submit('Submit profile', ['class' => 'btn btn-success d-none', 'id' => 'teacherProfileSubmit']) }}
+                    <div class="d-flex gap-3 align-items-center">
+                        <button type="button" class="btn btn-primary" id="teacherProfileNext">Next <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                        {{ Form::submit('Submit profile', ['class' => 'btn btn-success', 'id' => 'teacherProfileSubmit', 'style' => 'display: none;']) }}
+                    </div>
                 </div>
                 {{ Form::close() }}
             </div>
@@ -333,9 +307,9 @@
                     section.classList.remove('visible');
                 });
                 document.getElementById('teacherStep' + step).classList.add('visible');
-                backBtn.classList.toggle('invisible', step === 1);
-                nextBtn.classList.toggle('d-none', step === totalSteps);
-                submitBtn.classList.toggle('d-none', step !== totalSteps);
+                backBtn.style.visibility = (step === 1) ? 'hidden' : 'visible';
+                nextBtn.style.display = (step === totalSteps) ? 'none' : 'inline-block';
+                submitBtn.style.display = (step === totalSteps) ? 'inline-block' : 'none';
                 renderProgress();
                 window.scrollTo({top: 0, behavior: 'smooth'});
             }

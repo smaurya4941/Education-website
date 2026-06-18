@@ -128,7 +128,7 @@ class CandidateController extends AppBaseController
 
         Flash::success(__('messages.flash.candidate_profile'));
 
-        return redirect(route('candidate.profile'));
+        return redirect(route('dashboard'));
     }
 
     /**
