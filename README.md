@@ -1,6 +1,6 @@
-# 💼 Bizwoke (InfyJobs) - Premium Job Portal Platform
+# 💼 Sachin- Premium Job Portal Platform
 
-Bizwoke is a premium, feature-rich job portal application designed to bridge the gap between candidates seeking jobs and employers looking for top talent. Built with a modern tech stack (Laravel 10, Livewire 3, and Bootstrap), the platform offers a robust administrative system, custom branding support, localized content, and subscription monetizations out of the box.
+Sachin is a premium, feature-rich job portal application designed to bridge the gap between candidates seeking jobs and employers looking for top talent. Built with a modern tech stack (Laravel 10, Livewire 3, and Bootstrap), the platform offers a robust administrative system, custom branding support, localized content, and subscription monetizations out of the box.
 
 ---
 
