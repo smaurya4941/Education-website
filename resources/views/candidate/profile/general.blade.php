@@ -247,15 +247,12 @@
                         {{ Form::file('resume_file', ['class' => 'form-control', 'accept' => '.pdf,.doc,.docx']) }}
                     </div>
 
-                    <label class="form-check mb-0">
-                        <input class="form-check-input" type="checkbox" required>
-                        <span class="form-check-label">I agree to the terms of service and privacy policy</span>
-                    </label>
+                    {{-- Terms and conditions hidden for now --}}
                 </div>
 
                 <div class="d-flex justify-content-between mt-8">
                     <button type="button" class="btn btn-light" id="teacherProfileBack">Back</button>
-                    <div class="d-flex gap-3 align-items-center">
+                    <div class="d-flex gap-3 align-items-center ms-auto">
                         <button type="button" class="btn btn-primary" id="teacherProfileNext">Next <i class="fa-solid fa-arrow-right ms-2"></i></button>
                         {{ Form::submit('Submit profile', ['class' => 'btn btn-success', 'id' => 'teacherProfileSubmit', 'style' => 'display: none;']) }}
                     </div>
@@ -302,16 +299,31 @@
                 });
             }
 
-            function showStep(step) {
+            function showStep(step, scrollToTop = true) {
                 document.querySelectorAll('.teacher-form-section').forEach(function (section) {
                     section.classList.remove('visible');
                 });
                 document.getElementById('teacherStep' + step).classList.add('visible');
-                backBtn.style.visibility = (step === 1) ? 'hidden' : 'visible';
-                nextBtn.style.display = (step === totalSteps) ? 'none' : 'inline-block';
-                submitBtn.style.display = (step === totalSteps) ? 'inline-block' : 'none';
+                if (step === 1) {
+                    backBtn.style.setProperty('display', 'none', 'important');
+                } else if (step === totalSteps) {
+                    backBtn.style.setProperty('display', 'none', 'important');
+                } else {
+                    backBtn.style.setProperty('display', 'inline-block', 'important');
+                }
+                
+                if (step === totalSteps) {
+                    nextBtn.style.setProperty('display', 'none', 'important');
+                    submitBtn.style.setProperty('display', 'inline-block', 'important');
+                } else {
+                    nextBtn.style.setProperty('display', 'inline-block', 'important');
+                    submitBtn.style.setProperty('display', 'none', 'important');
+                }
+                
                 renderProgress();
-                window.scrollTo({top: 0, behavior: 'smooth'});
+                if (scrollToTop) {
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                }
             }
 
             function validateStep(step) {
@@ -319,6 +331,7 @@
                 const controls = section.querySelectorAll('input, select, textarea');
 
                 for (const control of controls) {
+
                     if (!control.checkValidity()) {
                         control.reportValidity();
                         return false;
@@ -347,13 +360,14 @@
                     return false;
                 }
 
+
                 return true;
             }
 
             function validateAllSteps() {
                 for (let step = 1; step <= totalSteps; step++) {
                     currentStep = step;
-                    showStep(currentStep);
+                    showStep(currentStep, false);
                     if (!validateStep(step)) {
                         return false;
                     }
@@ -401,6 +415,8 @@
                     }
                 });
             });
+
+
 
             backBtn.addEventListener('click', function () {
                 if (currentStep > 1) {
