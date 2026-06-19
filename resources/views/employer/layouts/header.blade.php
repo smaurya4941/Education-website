@@ -12,8 +12,8 @@
             </div>
         </a>
         
-        {{-- Desktop Navigation Menu --}}
-        <nav class="hidden lg:flex items-center" id="nav-header">
+        {{-- Desktop Navigation Menu / Mobile Sidebar Drawer --}}
+        <nav class="horizontal-sidebar d-block align-items-stretch" id="nav-header">
             @include('employer.layouts.sidebar')
         </nav>
         

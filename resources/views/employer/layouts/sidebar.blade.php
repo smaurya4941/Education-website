@@ -1,4 +1,4 @@
-<div class="w-full">
+<div class="w-full p-4 lg:p-0">
     <ul class="flex flex-col lg:flex-row items-stretch lg:items-center gap-2 m-0 p-0 list-none">
         
         {{-- Dashboard --}}
