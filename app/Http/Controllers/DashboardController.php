@@ -49,6 +49,7 @@ class DashboardController extends AppBaseController
         $data['recentFollowers'] = $this->dashboardRepository->getEmployerRecentFollowerData();
         $data['jobStatus'] = Job::whereCompanyId(getLoggedInUser()->owner_id)->pluck('job_title', 'id');
         $data['gender'] = Job::GENDER;
+        $data['isJobLimitExceeded'] = !app(\App\Repositories\JobRepository::class)->canCreateMoreJobs();
 
         return view('employer.dashboard.index')->with($data);
     }

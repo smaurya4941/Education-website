@@ -12,11 +12,31 @@
             <a href="{{ route('employer.dashboard') }}" class="inline-flex items-center justify-center px-6 py-3 border border-[#d1c1d8] text-[15px] font-bold rounded-xl text-[#4e4256] bg-white hover:border-[#a100ff] hover:text-[#a100ff] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 font-['Plus_Jakarta_Sans']">
                 {{ __('messages.common.back') }}
             </a>
-            <a href="{{ route('job.create') }}" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-[15px] font-bold rounded-xl text-white bg-[#a100ff] hover:bg-[#8e00e2] shadow-[0_4px_12px_rgba(161,0,255,0.2)] transition-all duration-300 font-['Plus_Jakarta_Sans']">
-                {{ __('messages.job.new_job') }}
-            </a>
+            @if(isset($isJobLimitExceeded) && $isJobLimitExceeded)
+                <button disabled class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-[15px] font-bold rounded-xl text-white bg-gray-400 cursor-not-allowed shadow-none font-['Plus_Jakarta_Sans']">
+                    {{ __('messages.job.new_job') }}
+                </button>
+            @else
+                <a href="{{ route('job.create') }}" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-[15px] font-bold rounded-xl text-white bg-[#a100ff] hover:bg-[#8e00e2] shadow-[0_4px_12px_rgba(161,0,255,0.2)] transition-all duration-300 font-['Plus_Jakarta_Sans']">
+                    {{ __('messages.job.new_job') }}
+                </a>
+            @endif
         </div>
     </div>
+    @if(isset($isJobLimitExceeded) && $isJobLimitExceeded)
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-8 rounded-r-xl shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <span class="material-symbols-outlined text-red-500 text-2xl">error</span>
+                </div>
+                <div class="ml-3">
+                    <p class="text-[15px] text-red-700 font-medium font-['Plus_Jakarta_Sans'] m-0">
+                        {!! __('messages.flash.job_create_limit') !!}
+                    </p>
+                </div>
+            </div>
+        </div>
+    @endif
     
     <div class="bg-white border border-[#ede8f5] rounded-[24px] shadow-[0_4px_20px_rgba(161,0,255,0.06)] p-6 lg:p-8 mb-8">
         @include('flash::message')

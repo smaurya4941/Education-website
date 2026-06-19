@@ -13,7 +13,7 @@ class EmployerJobTable extends LivewireTableComponent
 {
     protected $model = Job::class;
     protected string $tableName = 'jobs';
-    public $showButtonOnHeader = true;
+    public $showButtonOnHeader = false;
     public $showFilterOnHeader = true;
     public $featured = Job::SELECT_FEATURD;
     public $employeeJobStatus = Job::SELECT_STATUS;
@@ -28,6 +28,7 @@ class EmployerJobTable extends LivewireTableComponent
         $this->setPrimaryKey('id');
 
         $this->setDefaultSort('created_at', 'desc');
+        $this->setSearchPlaceholder('Search by name, date...');
 
         $this->setTableAttributes(
             [

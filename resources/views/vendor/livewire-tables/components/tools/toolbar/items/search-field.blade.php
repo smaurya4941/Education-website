@@ -6,7 +6,7 @@
                   class="position-absolute d-flex align-items-center top-0 bottom-0 left-0 text-gray-600 {{ auth()->user()->language == 'ar' ? 'me-3' : 'ms-3' }}">
             <i class="fa-solid fa-magnifying-glass"></i>
         </span>
-            <input class="form-control search-box {{ auth()->user()->language == 'ar' ? 'pe-8' : 'ps-8' }}" wire:model{{ $component->getSearchOptions() }}="search" type="search" placeholder="{{__('Search')}}" aria-label="Search">
+            <input class="form-control search-box {{ auth()->user()->language == 'ar' ? 'pe-8' : 'ps-8' }}" wire:model{{ $component->getSearchOptions() }}="search" type="search" placeholder="{{ $component->getSearchPlaceholder() }}" aria-label="Search">
         </div>
     </form>
     @if (isset($filters['search']) && strlen($filters['search']))

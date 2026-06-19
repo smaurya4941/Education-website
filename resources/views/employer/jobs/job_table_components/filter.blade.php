@@ -1,10 +1,9 @@
 <div class="ms-auto" wire:ignore>
          <div class="dropdown d-flex align-items-center {{ checkLanguageSession() == 'ar' ? 'ms-4' : 'me-4' }} me-md-2">
-             <button class="btn btn btn-icon btn-primary text-white dropdown-toggle hide-arrow ps-2 pe-0" type="button"
-                 id="employeeFeaturedFilterBtn"data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                 <p class="text-center">
-                     <i class='fas fa-filter'></i>
-                 </p>
+             <button class="btn btn-primary text-white dropdown-toggle hide-arrow d-flex align-items-center gap-2 px-4" type="button"
+                 id="employeeFeaturedFilterBtn" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                 <i class='fas fa-filter'></i>
+                 <span>Filter By</span>
              </button>
              <div class="dropdown-menu py-0" aria-labelledby="employeeFeaturedFilterBtn">
                  <div class="text-start border-bottom py-4 px-7">

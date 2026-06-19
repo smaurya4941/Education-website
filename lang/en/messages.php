@@ -180,7 +180,7 @@ return [
         'reset' => 'Reset',
         'description' => 'Description',
         'add' => 'Add',
-        'status' => 'Status',
+        'status' => 'Job Status',
         'view' => 'View',
         'back' => 'Back',
         'yes' => 'Yes',

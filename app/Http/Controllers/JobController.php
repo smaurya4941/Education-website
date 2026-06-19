@@ -50,12 +50,9 @@ class JobController extends AppBaseController
     public function index(): View
     {
         $statusArray = Job::STATUS_ARRAY;
+        $isJobLimitExceeded = ! $this->checkJobLimit();
 
-        if (! $this->checkJobLimit()) {
-            Flash::error(__('messages.flash.job_create_limit'));
-        }
-
-        return view('employer.jobs.index', compact('statusArray'));
+        return view('employer.jobs.index', compact('statusArray', 'isJobLimitExceeded'));
     }
 
     /**
@@ -63,8 +60,13 @@ class JobController extends AppBaseController
      *
      * @return Factory|View
      */
-    public function create(): View
+    public function create()
     {
+        if (! $this->checkJobLimit()) {
+            Flash::error(__('messages.flash.job_create_limit'));
+            return redirect(route('job.index'));
+        }
+
         $data = $this->jobRepository->prepareData();
 
         return view('employer.jobs.create')->with('data', $data);
