@@ -1,66 +1,78 @@
-<div class="row">
-    @forelse($jobs as $job)
-        <div class="col-lg-12 px-lg-3">
-            <div class="job-card">
-
-                <div class=" mb-40">
-                    <a href="{{ route('front.job.details', $job['job_id']) }}" class="card py-30 border-0 ">
-                        <div class="d-sm-flex position-relative">
-                            <div class="mb-sm-0 mb-3 {{ getFrontSelectLanguage() == 'ar' ? 'ms-sm-4' : 'me-sm-4' }}">
-                                <img src="{{ $job->company->company_url }}" class="card-img" alt="...">
+<div>
+    <div class="flex flex-col gap-4 mb-xl">
+        @forelse($jobs as $job)
+            <a href="{{ route('front.job.details', $job['job_id']) }}" class="block bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 job-card-hover text-decoration-none group">
+                <div class="flex items-start gap-5">
+                    <!-- Icon / Logo -->
+                    <div class="w-16 h-16 rounded-2xl bg-primary-fixed-dim/20 flex items-center justify-center flex-shrink-0 text-primary overflow-hidden">
+                        @if($job->company && $job->company->company_url)
+                            <img src="{{ $job->company->company_url }}" alt="Company Logo" class="w-full h-full object-cover">
+                        @else
+                            <span class="material-symbols-outlined text-[32px]">work</span>
+                        @endif
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-start mb-1">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h3 class="font-headline-md text-[20px] font-bold text-on-surface m-0 group-hover:text-primary transition-colors">
+                                    {{ html_entity_decode(Str::limit($job['job_title'], 50)) }}
+                                </h3>
+                                @if(!empty($job->experience))
+                                <span class="px-3 py-1 bg-tertiary-fixed text-tertiary-container rounded-full text-[12px] font-bold tracking-wide">
+                                    {{ $job->experience }} EXP
+                                </span>
+                                @endif
                             </div>
-                            <div class="">
-                                <div class="card-body p-0 ">
-                                    <h5 class="card-title text-secondary fs-18 mb-0">
-                                        {{ html_entity_decode(Str::limit($job['job_title'], 50)) }}
-                                        @if (isset($job->jobShift->shift))
-                                        <span class="text text-primary fs-6 mb-0 me-3">
-                                            {{ $job->jobShift->shift }}
-                                        </span>
-                                        @endif
-                                    </h5>
-                                    <div class="">
-                                        <div class="card-desc d-flex flex-wrap mt-2 ">
-                                            <div class="desc d-flex {{ getFrontSelectLanguage() == 'ar' ? 'ms-4' : 'me-4' }}">
-                                              <div class="{{ getFrontSelectLanguage() == 'ar' ? 'ms-3' : 'me-3' }} w-20">
-                                                <img src="{{ asset('img_template/briefcase.svg') }}" class="w-100">
-                                              </div>
-                                              <p class="fs-14 text-gray mb-2">{{ $job->jobCategory->name }}</p>
-                                            </div>
-                                            <div class="desc d-flex {{ getFrontSelectLanguage() == 'ar' ? 'ms-4' : 'me-4' }}">
-                                              <div class="{{ getFrontSelectLanguage() == 'ar' ? 'ms-3' : 'me-3' }} w-20">
-                                                <img src="{{ asset('img_template/location.svg') }}" class="w-100">
-                                              </div>
-                                              <p class="fs-14 text-gray mb-2">{{ !empty($job->full_location) ? $job->full_location : 'Location Info. not available.' }}</p>
-                                            </div>
-                                            <div class="desc d-flex {{ getFrontSelectLanguage() == 'ar' ? 'ms-4' : 'me-4' }}">
-                                              <div class="{{ getFrontSelectLanguage() == 'ar' ? 'ms-3' : 'me-3' }} w-20">
-                                                <img src=" {{ asset('img_template/clock.svg') }}" class="w-100">
-                                              </div>
-                                              <p class="fs-14 text-gray mb-2">{{ $job->created_at->diffForHumans() }}</p>
-                                            </div>
-                                          </div>
-                                    </div>
-                                    <div class="desc d-flex">
-                                        <p class="text text-primary fs-14 mb-0 {{ getFrontSelectLanguage() == 'ar' ? 'ms-3' : 'me-3' }}">
-                                            {{ !empty($job->jobsSkill[0]->name) ? $job->jobsSkill[0]->name : 'Skill' }}
-                                        </p>
-                                        <p class="fs-14 text text-primary mb-0">{{ $job->jobsSkill->count() }}+</p>
-                                    </div>
-                                </div>
-                            </div>
+                            
+                            <!-- Job Type Badge -->
+                            @if(isset($job->jobType))
+                            <span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-lg text-[13px] font-semibold whitespace-nowrap ml-3">
+                                {{ $job->jobType->name }}
+                            </span>
+                            @endif
                         </div>
-                    </a>
-                </div>
 
+                        <p class="font-body-md text-secondary text-[15px] mb-4">
+                            {{ $job->company->user->first_name ?? '' }} {{ $job->company->user->last_name ?? '' }}
+                        </p>
+
+                        <div class="flex flex-wrap gap-5 text-on-surface-variant text-[14px] mb-4">
+                            <div class="flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-[18px]">location_on</span>
+                                {{ !empty($job->full_location) ? $job->full_location : 'Location Info. not available.' }}
+                            </div>
+                            @if (isset($job->jobShift->shift))
+                            <div class="flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-[18px]">schedule</span>
+                                {{ $job->jobShift->shift }}
+                            </div>
+                            @endif
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-1.5 text-on-surface-variant text-[14px]">
+                                <span class="material-symbols-outlined text-[18px]">history</span>
+                                {{ $job->created_at->diffForHumans() }}
+                            </div>
+                            <button class="px-6 py-2.5 bg-primary text-on-primary rounded-xl font-semibold text-[14px] shadow-sm group-hover:bg-[#8b00e6] transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        @empty
+            <div class="col-span-full text-center text-on-surface-variant py-xl">
+                @lang('web.job_menu.no_results_found')
             </div>
-        </div>
-    @empty
-        <div class="col-md-12 text-center text-gray">
-            @lang('web.job_menu.no_results_found')
-        </div>
-    @endforelse
+        @endforelse
+    </div>
+
     @if($jobs->count() > 0)
-        {{$jobs->links() }}
+        <div class="mt-lg flex justify-center w-full">
+            {{ $jobs->links() }}
+        </div>
     @endif
 </div>
