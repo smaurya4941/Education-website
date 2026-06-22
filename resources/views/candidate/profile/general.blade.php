@@ -289,7 +289,14 @@
                     const state = step < currentStep ? 'done' : step === currentStep ? 'active' : '';
                     const node = document.createElement('div');
                     node.className = 'teacher-step-node';
+                    node.style.cursor = 'pointer';
                     node.innerHTML = '<div class="teacher-step-circle ' + state + '">' + (step < currentStep ? '<i class="fa-solid fa-check"></i>' : step) + '</div><span class="teacher-step-label ' + state + '">' + label + '</span>';
+                    
+                    node.addEventListener('click', function() {
+                        currentStep = step;
+                        showStep(currentStep);
+                    });
+
                     progress.appendChild(node);
                     if (step < totalSteps) {
                         const line = document.createElement('div');
@@ -305,8 +312,6 @@
                 });
                 document.getElementById('teacherStep' + step).classList.add('visible');
                 if (step === 1) {
-                    backBtn.style.setProperty('display', 'none', 'important');
-                } else if (step === totalSteps) {
                     backBtn.style.setProperty('display', 'none', 'important');
                 } else {
                     backBtn.style.setProperty('display', 'inline-block', 'important');
