@@ -53,6 +53,7 @@
         $education = $data['candidateEducations']->first();
         $experience = $data['candidateExperiences']->first();
         $certifications = old('teaching_certifications', $candidate->teaching_certifications ?? []);
+        $otherCertifications = old('other_certification', $candidate->other_certification ?? []);
         $subjects = old('teaching_subjects', $candidate->teaching_subjects ?? []);
         $gradeLevels = old('grade_levels', $candidate->grade_levels ?? []);
         $mediums = old('instruction_mediums', $candidate->instruction_mediums ?? []);
@@ -121,10 +122,18 @@
                             <div class="teacher-check-grid">
                                 @foreach (['B.Ed (Bachelor of Education)', 'CTET (Central Teacher Eligibility Test)', 'STET (State Teacher Eligibility Test)', 'TET (Teacher Eligibility Test)', 'Other certification'] as $certification)
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" name="teaching_certifications[]" value="{{ $certification }}" @checked(in_array($certification, $certifications))>
+                                        <input class="form-check-input teaching-cert-checkbox" type="checkbox" name="teaching_certifications[]" value="{{ $certification }}" @checked(in_array($certification, $certifications)) data-is-other="{{ $certification === 'Other certification' ? 'true' : 'false' }}">
                                         <label class="form-check-label">{{ $certification }}</label>
                                     </div>
                                 @endforeach
+                            </div>
+                            <div class="mt-3" id="otherCertificationInputWrapper" style="display: {{ in_array('Other certification', $certifications) ? 'block' : 'none' }};">
+                                <label class="form-label">Other certifications <span class="required"></span></label>
+                                <div class="teacher-tags" data-tag-list="otherCertifications"></div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" data-tag-input="otherCertifications" placeholder="e.g. TEFL, TESOL" id="otherCertificationInput">
+                                    <button class="btn btn-light" type="button" data-tag-add="otherCertifications"><i class="fa-solid fa-plus"></i> Add</button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 mb-4">
@@ -266,8 +275,9 @@
     <script>
         var phoneNo = "{{ old('region_code') . old('phone') }}";
         window.teacherProfileInitialTags = {
-            subjects: @json(array_values($subjects)),
-            languages: @json(array_values($spokenLanguages)),
+            subjects: @json(is_array($subjects) ? array_values($subjects) : []),
+            languages: @json(is_array($spokenLanguages) ? array_values($spokenLanguages) : []),
+            otherCertifications: @json(is_array($otherCertifications) ? array_values($otherCertifications) : []),
         };
     </script>
     <script>
@@ -280,7 +290,7 @@
             const backBtn = document.getElementById('teacherProfileBack');
             const nextBtn = document.getElementById('teacherProfileNext');
             const submitBtn = document.getElementById('teacherProfileSubmit');
-            const tags = window.teacherProfileInitialTags || {subjects: [], languages: []};
+            const tags = window.teacherProfileInitialTags || {subjects: [], languages: [], otherCertifications: []};
 
             function renderProgress() {
                 progress.innerHTML = '';
@@ -343,6 +353,20 @@
                     }
                 }
 
+                if (step === 2) {
+                    const otherCheckbox = section.querySelector('.teaching-cert-checkbox[data-is-other="true"]');
+                    if (otherCheckbox && otherCheckbox.checked && tags.otherCertifications.length === 0) {
+                        const otherInput = document.querySelector('[data-tag-input="otherCertifications"]');
+                        otherInput.setCustomValidity('Please add at least one other certification.');
+                        otherInput.reportValidity();
+                        otherInput.addEventListener('input', function clearOtherValidation() {
+                            otherInput.setCustomValidity('');
+                            otherInput.removeEventListener('input', clearOtherValidation);
+                        });
+                        return false;
+                    }
+                }
+
                 if (step === 3 && tags.subjects.length === 0) {
                     const subjectInput = document.querySelector('[data-tag-input="subjects"]');
                     subjectInput.setCustomValidity('Please add at least one subject.');
@@ -387,7 +411,13 @@
                 tags[key].forEach(function (value) {
                     const item = document.createElement('span');
                     item.className = 'teacher-tag';
-                    item.innerHTML = '<span></span><button type="button" aria-label="Remove">&times;</button><input type="hidden" name="' + (key === 'subjects' ? 'teaching_subjects[]' : 'spoken_languages[]') + '">';
+                    
+                    let hiddenInputName = '';
+                    if (key === 'subjects') hiddenInputName = 'teaching_subjects[]';
+                    else if (key === 'languages') hiddenInputName = 'spoken_languages[]';
+                    else if (key === 'otherCertifications') hiddenInputName = 'other_certification[]';
+
+                    item.innerHTML = '<span></span><button type="button" aria-label="Remove">&times;</button><input type="hidden" name="' + hiddenInputName + '">';
                     item.querySelector('span').textContent = value;
                     item.querySelector('input').value = value;
                     item.querySelector('button').addEventListener('click', function () {
@@ -446,7 +476,26 @@
 
             renderTags('subjects');
             renderTags('languages');
+            renderTags('otherCertifications');
             showStep(currentStep);
+
+            const otherCertWrapper = document.getElementById('otherCertificationInputWrapper');
+            const otherCertInput = document.getElementById('otherCertificationInput');
+            
+            document.querySelectorAll('.teaching-cert-checkbox').forEach(function (checkbox) {
+                checkbox.addEventListener('change', function () {
+                    if (this.dataset.isOther === 'true') {
+                        if (this.checked) {
+                            otherCertWrapper.style.display = 'block';
+                        } else {
+                            otherCertWrapper.style.display = 'none';
+                            tags.otherCertifications = [];
+                            renderTags('otherCertifications');
+                            otherCertInput.value = '';
+                        }
+                    }
+                });
+            });
         });
     </script>
 @endpush
