@@ -94,4 +94,15 @@ class HomeController extends AppBaseController
 
         return response()->json(['results' => $results]);
     }
+
+    /**
+     * @return Factory|View
+     */
+    public function services(): View
+    {
+        $data['branding'] = $this->homeRepository->getBranding();
+        $data['cmsServices'] = CmsServices::pluck('value', 'key')->toArray();
+
+        return view('front_web.services.index')->with($data);
+    }
 }

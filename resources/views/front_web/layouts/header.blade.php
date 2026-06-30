@@ -66,8 +66,8 @@
                 </div>
 
                 {{-- Services --}}
-                <a href="{{ url('/services') }}"
-                    class="bw-nav-btn {{ Request::is('services') ? 'bw-nav-btn--active' : '' }}"
+                <a href="{{ route('front.services') }}"
+                    class="bw-nav-btn {{ request()->routeIs('front.services') ? 'bw-nav-btn--active' : '' }}"
                     style="text-decoration:none; font-size:14px; color:#4e4256; padding:0; background:none;">Services</a>
 
                 {{-- Language --}}
@@ -239,7 +239,7 @@
             <a href="{{ route('front.contact') }}" style="text-decoration:none; padding:10px 0; font-size:15px; color:#1b1c1c; font-family:'Plus Jakarta Sans', sans-serif; border-bottom:1px solid #f5f3f3;">Contact Us</a>
             <a href="{{ url('/our-team') }}" style="text-decoration:none; padding:10px 0; font-size:15px; color:#1b1c1c; font-family:'Plus Jakarta Sans', sans-serif; border-bottom:1px solid #f5f3f3;">Our Team</a>
 
-            <a href="{{ url('/services') }}" style="text-decoration:none; padding:10px 0; font-size:15px; color:#1b1c1c; font-family:'Plus Jakarta Sans', sans-serif; border-bottom:1px solid #f5f3f3;">Services</a>
+            <a href="{{ route('front.services') }}" style="text-decoration:none; padding:10px 0; font-size:15px; color:#1b1c1c; font-family:'Plus Jakarta Sans', sans-serif; border-bottom:1px solid #f5f3f3;">Services</a>
 
             @if (!Auth::check())
                 <div style="display:flex; gap:12px; margin-top:20px;">

@@ -745,6 +745,7 @@ Route::middleware('xss', 'setLanguage')->group(function () {
     )->name('front.candidate.lists')->middleware('role:Admin|Employer');
     Route::get('/company-details/{uniqueId?}', [Web\CompanyController::class, 'getCompaniesDetails'])->name('front.company.details');
     Route::get('/about-us', [Web\AboutUsController::class, 'FAQLists'])->name('front.about.us');
+    Route::get('/services', [Web\HomeController::class, 'services'])->name('front.services');
     Route::get('/categories', [Web\CategoriesController::class, 'index'])->name('front.categories');
     Route::get('/front-register', [Web\RegisterController::class, 'candidateRegister'])->name('front.register');
     Route::get('/candidate-register', [Web\RegisterController::class, 'candidateRegister'])->name('candidate.register');
